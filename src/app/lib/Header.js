@@ -1,6 +1,6 @@
 import BaseRepository from "./BaseRepository";
 
 export default class HeaderRepository extends BaseRepository {
-    static contentType = "Header";
+    static contentType = "header";
     defaultOrder = "-sys.createdAt";
 }

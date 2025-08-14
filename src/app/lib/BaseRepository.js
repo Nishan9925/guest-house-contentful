@@ -3,24 +3,24 @@ import { parseModelsEntries, parsePaginatedEntries } from './common/parsers';
 import Singleton from './abstracts/Singleton';
 
 export default class BaseRepository extends Singleton {
-  cdaClient
-  cpaClient
-  contentType
-  defaultOrder
-  constructor(
-    {
-      CONTENTFUL_SPACE_ID = process.env.CONTENTFUL_SPACE_ID,
-      CONTENTFUL_ACCESS_TOKEN = process.env.CONTENTFUL_ACCESS_TOKEN,
-      CONTENTFUL_PREVIEW_ACCESS_TOKEN = process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN,
-      CONTENTFUL_ENV = process.env.CONTENTFUL_ENV,
-    } = process.env
-  ) {
-    super()
-    if (CONTENTFUL_SPACE_ID && CONTENTFUL_ACCESS_TOKEN) {
-      this.cdaClient = createClient({
-        host: 'cdn.contentful.com',
-        space: CONTENTFUL_SPACE_ID,
-        accessToken: CONTENTFUL_ACCESS_TOKEN,
+    cdaClient
+    cpaClient
+    contentType
+    defaultOrder
+    constructor(
+        {
+            CONTENTFUL_SPACE_ID = process.env.NEXT_PUBLIC_CONTENTFUL_SPACE_ID,
+            CONTENTFUL_ACCESS_TOKEN = process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN,
+            CONTENTFUL_PREVIEW_ACCESS_TOKEN = process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN,
+            CONTENTFUL_ENV = process.env.NEXT_PUBLIC_CONTENTFUL_ENV,
+        } = process.env
+    ) {;
+        super()
+        if (CONTENTFUL_SPACE_ID && CONTENTFUL_ACCESS_TOKEN) {
+            this.cdaClient = createClient({
+                host: 'cdn.contentful.com',
+                space: CONTENTFUL_SPACE_ID,
+                accessToken: CONTENTFUL_ACCESS_TOKEN,
         environment: CONTENTFUL_ENV,
       })
     }
@@ -37,8 +37,12 @@ export default class BaseRepository extends Singleton {
     return this.constructor.contentType
   }
   getClient(preview = false) {
-    return preview ? this.cpaClient : this.cdaClient
+  const client = preview ? this.cpaClient : this.cdaClient
+  if (!client) {
+    throw new Error('Contentful client is not initialized. Check your environment variables.')
   }
+  return client
+}
   async getBySlug(slug, options = {}, preview = false) {
     return this.getModel(
       {

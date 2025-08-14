@@ -1,6 +1,7 @@
 "use client";
 import { useEffect, useState } from "react";
 import HeaderRepository from "../lib/Header";
+import Image from "next/image";
 
 function Header() {
   const [headerData, setHeaderData] = useState(null);
@@ -12,21 +13,15 @@ function Header() {
     }
     fetchData();
   }, []);
-
+  console.log("Header data:", headerData);
+  const logo = headerData?.fields?.logo?.fields?.file?.url ? `https:${headerData.fields.logo.fields.file.url}`
+    : "";
   if (!headerData) return <header>Loading...</header>;
 
   return (
     <header>
-      <h1>{headerData.menuItems.title}</h1>
-      <nav>
-        <ul>
-          {headerData.map((item) => (
-            <li key={item.id}>
-              <a href={item.url}>{item.label}</a>
-            </li>
-          ))}
-        </ul>
-      </nav>
+      <Image src={logo} alt="Logo" width={100} height={100} />
+      <Navbar language />
     </header>
   );
 }
