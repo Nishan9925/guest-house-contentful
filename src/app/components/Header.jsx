@@ -9,7 +9,7 @@ function Header() {
 
   useEffect(() => {
     async function fetchData() {
-      const data = await HeaderRepository.getInstance().getModel();
+      const data = await HeaderRepository.getInstance().getModels();
       setHeaderData(data);
     }
     fetchData();
@@ -18,7 +18,7 @@ function Header() {
   console.log("Header data:", headerData);
   const logo = headerData?.fields?.logo?.fields?.file?.url
     ? `https:${headerData.fields.logo.fields.file.url}`
-    : "";
+    : headerData?.fields?.logo?.fields?.file?.title;
 
   if (!headerData) return <header>Loading...</header>;
 
