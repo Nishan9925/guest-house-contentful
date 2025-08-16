@@ -13,8 +13,6 @@ function Navbar() {
     fetchData();
   }, []);
 
-  console.log("Navbar data:", navbarData);
-
   if (!navbarData) return <nav>Loading...</nav>;
 
   return (

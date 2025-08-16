@@ -19,7 +19,7 @@ function Header() {
   const logo = headerData?.fields?.logo?.fields?.file?.url
     ? `https:${headerData.fields.logo.fields.file.url}`
     : "";
-    
+
   if (!headerData) return <header>Loading...</header>;
 
   return (
