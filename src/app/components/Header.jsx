@@ -1,31 +1,21 @@
 "use client";
-import { useEffect, useState } from "react";
-import HeaderRepository from "../lib/Header";
 import Image from "next/image";
 import Navbar from "./Navbar";
 
-function Header() {
-  const [headerData, setHeaderData] = useState(null);
+function Header({data}) {
+  // console.log("Header data:", data);
 
-  useEffect(() => {
-    async function fetchData() {
-      const data = await HeaderRepository.getInstance().getModels();
-      setHeaderData(data);
-    }
-    fetchData();
-  }, []);
 
-  console.log("Header data:", headerData);
-  const logo = headerData?.fields?.logo?.fields?.file?.url
-    ? `https:${headerData.fields.logo.fields.file.url}`
-    : headerData?.fields?.logo?.fields?.file?.title;
-
-  if (!headerData) return <header>Loading...</header>;
+  const logo = data?.[0]?.fields?.logo?.fields;
+  const imageUrl = logo?.file?.url ? `https:${logo.file.url}` : null;
+  const title = data?.[0]?.fields?.logoAltText;
+  const navigationLinks = data?.[0]?.fields?.navigationLinks || [];
+  if (!data) return <header>Loading...</header>;
 
   return (
-    <header>
-      <Image src={logo} alt="Logo" width={100} height={100} />
-      <Navbar />
+    <header className="bg-accent-first">
+      <Image src={imageUrl} alt={title} width={50} height={50} />
+      <Navbar data={navigationLinks} />
     </header>
   );
 }

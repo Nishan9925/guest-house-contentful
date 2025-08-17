@@ -1,24 +1,33 @@
 @import "tailwindcss";
 
-/* reset.css */
+:root {
+  --primary: rgba(250, 249, 246, 1);
+  --secondary: rgba(255, 255, 255, 1);
+  --accent-first: rgba(85, 107, 47, 1);
+  --accent-second: rgba(210, 105, 30, 1);
+  --black: rgba(0, 0, 0, 1);
+}
 
-/* Box sizing rules */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 *,
 *::before,
 *::after {
   box-sizing: border-box;
 }
 
-/* Remove default margin and padding */
 * {
   margin: 0;
   padding: 0;
 }
 
-/* Remove default font inheritance */
+
 html {
-  line-height: 1.15; /* Improve text rendering */
-  -webkit-text-size-adjust: 100%; /* Prevent iOS text resize */
+  line-height: 1.15;
+  -webkit-text-size-adjust: 100%;
 }
 
 body {
@@ -27,17 +36,14 @@ body {
     "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji",
     "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
   line-height: 1.5;
-  background: #fff;
-  color: #000;
 }
 
-/* Remove list styles */
 ol,
 ul {
   list-style: none;
 }
 
-/* Remove quotes in blockquotes and q */
+
 blockquote,
 q {
   quotes: none;
@@ -49,19 +55,16 @@ q::after {
   content: "";
 }
 
-/* Reset table styles */
 table {
   border-collapse: collapse;
   border-spacing: 0;
 }
 
-/* Remove anchor underline and set inherit color */
 a {
   text-decoration: none;
   color: inherit;
 }
 
-/* Reset buttons, inputs, selects, and textareas */
 button,
 input,
 optgroup,
@@ -93,12 +96,10 @@ button:disabled {
   cursor: default;
 }
 
-/* Remove default focus outlines */
 :focus {
   outline: none;
 }
 
-/* Remove default form element styles */
 fieldset {
   border: none;
   margin: 0;
@@ -109,14 +110,12 @@ legend {
   padding: 0;
 }
 
-/* Reset images */
 img {
   max-width: 100%;
   display: block;
   border-style: none;
 }
 
-/* Reset heading sizes */
 h1,
 h2,
 h3,
@@ -127,7 +126,7 @@ h6 {
   font-weight: inherit;
 }
 
-/* Reset code/pre */
+
 code,
 kbd,
 samp,
@@ -136,7 +135,9 @@ pre {
   font-size: 1em;
 }
 
-/* Make hidden elements truly hidden */
+
 [hidden] {
   display: none !important;
 }
+
+
