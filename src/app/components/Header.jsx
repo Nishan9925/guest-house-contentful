@@ -48,7 +48,7 @@ function Header({ data }) {
       style={{ backgroundColor: "var(--accent-first)" }}
       className="w-full flex-row items-center justify-center shadow-2xl"
     >
-      <div className="w-[100%] sm:w-[90%] max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between p-2 ">
+      <div className="w-[100%] sm:w-[90%] max-w-7xl mx-auto px-4  flex items-center justify-between p-2 ">
         {/* Logo */}
         <Link href="/">
           <Image src={imageUrl} alt={title} width={40} height={40} />
@@ -60,13 +60,10 @@ function Header({ data }) {
         </div>
 
         {/* Mobile Desktop Social Media */}
-        <div className="flex flex-row items-center justify-between gap-1">
-          {/* <Link href="https://facebook.com" target="_blank"> */}
-            <FacebookIcon/>
-          {/* </Link> */}
-          {/* <Link href="https://instagram.com" target="_blank"> */}
+        <div className="flex flex-row items-end justify-between gap-4 ">
+        <div className="flex flex-row items-center justify-between gap-2">
+            <FacebookIcon />
             <InstagramIcon />
-          {/* </Link> */}
         </div>
 
         {/* Hamburger Button */}
@@ -99,6 +96,7 @@ function Header({ data }) {
           </svg>
         </button>
       </div>
+</div>
 
       {/* Mobile Menu */}
       {menuOpen && (
