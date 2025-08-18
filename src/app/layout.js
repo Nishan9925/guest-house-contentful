@@ -4,6 +4,7 @@ import "./globals.css";
 import Header from "./components/Header";
 import HeaderRepository from "./lib/Header";
 
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -29,9 +30,11 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        <header style={{ backgroundColor: "var(--primary)" }}>
-          <Header data={headerData} />
-        </header>
+        {/* <header style={{ backgroundColor: "var(--accent-first)" }} className="flex w-full items-center justify-center m-4" > */}
+          <Header
+            data={headerData}
+          />
+        {/* </header> */}
         <main>{children}</main>
       </body>
     </html>
