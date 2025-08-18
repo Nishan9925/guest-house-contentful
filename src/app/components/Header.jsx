@@ -60,7 +60,7 @@ function Header({ data }) {
         </div>
 
         {/* Mobile Desktop Social Media */}
-        <div className="flex flex-row items-end justify-between gap-4 ">
+        <div className="flex flex-row items-end justify-between gap-4">
         <div className="flex flex-row items-center justify-between gap-2">
             <FacebookIcon />
             <InstagramIcon />
