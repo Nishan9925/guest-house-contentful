@@ -30,11 +30,9 @@ export default function RootLayout({ children }) {
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
-        {/* <header style={{ backgroundColor: "var(--accent-first)" }} className="flex w-full items-center justify-center m-4" > */}
           <Header
             data={headerData}
           />
-        {/* </header> */}
         <main>{children}</main>
       </body>
     </html>
