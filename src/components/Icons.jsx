@@ -50,9 +50,11 @@ export function AccentBar() {
     <div
       style={{
         backgroundColor: "var(--accent-first)",
-        width: "1.5px",
+        // minWidth: "2px",
         height: "24px",
         borderRadius: "2px",
+        display: "block",
+        padding: "0 .7px",
       }}
     ></div>
   );

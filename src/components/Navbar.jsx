@@ -42,7 +42,7 @@ function Navbar({ data, isMobile, onLinkClick }) {
                 href={href}
                 onClick={() => onLinkClick?.()}
                 className={`
-                  flex justify-end py-4 px-3 text-sm 
+                  flex justify-end py-3 px-2 text-sm 
                   ${isActive ? "border-b-2" : ""},
                    ${
                      isActive

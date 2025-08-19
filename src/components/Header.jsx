@@ -24,18 +24,26 @@ function Header({ data }) {
     <header className="w-full flex flex-col items-center justify-center shadow-[inset_0px_-14px_16px_rgba(0,0,0,0.3)]">
       {/* Pre-Header */}
       <div
-        className="w-full flex px-4 py-1.5 gap-2 items-center"
+        className="w-full flex px-4 py-1.5 gap-1 items-center"
         style={{ backgroundColor: "var(--secondary)" }}
       >
-        <a href={`tel:${phonenumber}`} style={{ color: "var(--black)" }}>
+        <a
+          href={`tel:${phonenumber}`}
+          className="text-xs sm:text-sm"
+          style={{ color: "var(--black)" }}
+        >
           {phonenumber}
         </a>
         <AccentBar />
-        <a href={`mailto:${email}`} style={{ color: "var(--black)" }}>
+        <a
+          href={`mailto:${email}`}
+          className="text-xs sm:text-sm"
+          style={{ color: "var(--black)" }}
+        >
           {email}
         </a>
         <AccentBar />
-        <div className="flex flex-row items-center justify-between gap-2">
+        <div className="flex flex-row items-center justify-between gap-2 px-1">
           <FacebookIcon />
           <InstagramIcon />
         </div>
@@ -44,7 +52,7 @@ function Header({ data }) {
       {/* Header */}
       <div
         style={{ backgroundColor: "var(--accent-first)" }}
-        className="w-[100%]  max-w-7xl mx-auto px-4 flex items-center justify-between p-2"
+        className="w-[100%] mx-auto px-4 flex items-center justify-between p-2"
       >
         {/* Logo */}
         <Link href="/">
