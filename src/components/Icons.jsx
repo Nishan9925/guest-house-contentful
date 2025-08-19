@@ -1,5 +1,5 @@
-import FacebookIconSVG from "../../assets/icons/facebook-icon.svg";
-import InstaIcon from "../../assets/icons/instagram-icon.svg";
+import FacebookIconSVG from "../assets/icons/facebook-icon.svg";
+import InstaIcon from "../assets/icons/instagram-icon.svg";
 import Link from "next/link";
 
 export function FacebookIcon({ size = 20, href = "https://facebook.com" }) {
