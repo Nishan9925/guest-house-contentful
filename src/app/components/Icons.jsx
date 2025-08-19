@@ -2,10 +2,7 @@ import FacebookIconSVG from "../../assets/icons/facebook-icon.svg";
 import InstaIcon from "../../assets/icons/instagram-icon.svg";
 import Link from "next/link";
 
-export default function FacebookIcon({
-  size = 20,
-  href = "https://facebook.com"
-}) {
+export function FacebookIcon({ size = 20, href = "https://facebook.com" }) {
   return (
     <Link
       href={href}
@@ -19,8 +16,8 @@ export default function FacebookIcon({
       }}
     >
       <FacebookIconSVG
-        stroke="white"
-        fill="white"
+        stroke="black"
+        fill="black"
         strokeWidth="1"
         style={{ width: "100%", height: "100%" }}
         viewBox="0 0 50 50"
@@ -29,10 +26,7 @@ export default function FacebookIcon({
   );
 }
 
-export function InstagramIcon({
-    size = 20,
-    href = "https://instagram.com"
-}) {
+export function InstagramIcon({ size = 20, href = "https://instagram.com" }) {
   return (
     <Link
       href={href}
@@ -41,12 +35,25 @@ export function InstagramIcon({
       style={{ display: "inline-block", width: size, height: size }}
     >
       <InstaIcon
-        stroke="white"
-        fill="white"
+        stroke="black"
+        fill="black"
         strokeWidth="1"
         style={{ width: "100%", height: "100%" }}
         viewBox="0 0 50 50"
       />
     </Link>
+  );
+}
+
+export function AccentBar() {
+  return (
+    <div
+      style={{
+        backgroundColor: "var(--accent-first)",
+        width: "1.5px",
+        height: "24px",
+        borderRadius: "2px",
+      }}
+    ></div>
   );
 }

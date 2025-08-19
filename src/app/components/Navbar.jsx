@@ -21,7 +21,7 @@ function Navbar({ data, isMobile, onLinkClick }) {
       });
     };
 
-    handleScroll(); // initial check
+    handleScroll();
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, [data]);

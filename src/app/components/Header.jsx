@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { useState } from "react";
 
-import FacebookIcon, { InstagramIcon } from "./Icons";
+import { FacebookIcon, InstagramIcon, AccentBar } from "./Icons";
 
 function Header({ data }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -13,16 +13,39 @@ function Header({ data }) {
   const logo = data?.[0]?.fields?.logo?.fields;
   const imageUrl = logo?.file?.url ? `https:${logo.file.url}` : null;
   const title = data?.[0]?.fields?.logoAltText || "Logo";
+  const phonenumber = data?.[0]?.fields?.phoneNumber;
+  const email = data?.[0]?.fields?.emailAddress;
   const navigationLinks = data?.[0]?.fields?.navigationLinks || [];
 
   if (!data) return <header>Loading...</header>;
+  // console.log("Header data:", data);
 
   return (
-    <header
-      style={{ backgroundColor: "var(--accent-first)" }}
-      className="w-full flex-row items-center justify-center shadow-[inset_0px_-14px_16px_rgba(0,0,0,0.3)]"
-    >
-      <div className="w-[100%] sm:w-[90%] max-w-7xl mx-auto px-4 flex items-center justify-between p-2">
+    <header className="w-full flex flex-col items-center justify-center shadow-[inset_0px_-14px_16px_rgba(0,0,0,0.3)]">
+      {/* Pre-Header */}
+      <div
+        className="w-full flex px-4 py-1.5 gap-2 items-center"
+        style={{ backgroundColor: "var(--secondary)" }}
+      >
+        <a href={`tel:${phonenumber}`} style={{ color: "var(--black)" }}>
+          {phonenumber}
+        </a>
+        <AccentBar />
+        <a href={`mailto:${email}`} style={{ color: "var(--black)" }}>
+          {email}
+        </a>
+        <AccentBar />
+        <div className="flex flex-row items-center justify-between gap-2">
+          <FacebookIcon />
+          <InstagramIcon />
+        </div>
+      </div>
+
+      {/* Header */}
+      <div
+        style={{ backgroundColor: "var(--accent-first)" }}
+        className="w-[100%]  max-w-7xl mx-auto px-4 flex items-center justify-between p-2"
+      >
         {/* Logo */}
         <Link href="/">
           <Image src={imageUrl} alt={title} width={40} height={40} />
@@ -35,11 +58,6 @@ function Header({ data }) {
 
         {/* Mobile Desktop Social Media */}
         <div className="flex flex-row items-end justify-between gap-4">
-          <div className="flex flex-row items-center justify-between gap-2">
-            <FacebookIcon />
-            <InstagramIcon />
-          </div>
-
           {/* Hamburger Button */}
           <button
             className="sm:hidden rounded-md focus:outline-none"
@@ -74,8 +92,18 @@ function Header({ data }) {
 
       {/* Mobile Menu */}
       {menuOpen && (
-        <div className="sm:hidden px-4 pb-4 z-1 absolute w-full" style={{ backgroundColor: "var(--accent-first)", boxShadow: "inset rgba(0,0,0,1)" }}>
-          <Navbar data={navigationLinks} isMobile={true} onLinkClick={() => setMenuOpen(false)} />
+        <div
+          className="sm:hidden px-4 pb-4 z-1 absolute w-full"
+          style={{
+            backgroundColor: "var(--accent-first)",
+            boxShadow: "inset rgba(0,0,0,1)",
+          }}
+        >
+          <Navbar
+            data={navigationLinks}
+            isMobile={true}
+            onLinkClick={() => setMenuOpen(false)}
+          />
         </div>
       )}
     </header>
