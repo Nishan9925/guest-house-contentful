@@ -2,7 +2,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-function Navbar({ data, isMobile }) {
+function Navbar({ data, isMobile, onLinkClick }) {
   const pathname = usePathname();
   const [activeHash, setActiveHash] = useState("");
 
@@ -40,6 +40,7 @@ function Navbar({ data, isMobile }) {
             <li key={item.sys.id}>
               <Link
                 href={href}
+                onClick={() => onLinkClick?.()}
                 className={`
                   flex justify-end py-4 px-3 text-sm 
                   ${isActive ? "border-b-2" : ""},

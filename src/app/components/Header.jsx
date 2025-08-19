@@ -1,29 +1,3 @@
-// "use client";
-// import Image from "next/image";
-// import Navbar from "./Navbar";
-// import Link from "next/link";
-
-// function Header({ data }) {
-//   // console.log("Header data:", data);
-
-//   const logo = data?.[0]?.fields?.logo?.fields;
-//   const imageUrl = logo?.file?.url ? `https:${logo.file.url}` : null;
-//   const title = data?.[0]?.fields?.logoAltText;
-//   const navigationLinks = data?.[0]?.fields?.navigationLinks || [];
-//   if (!data) return <header>Loading...</header>;
-
-//   return (
-//     <header className="flex w-[80%] items-center justify-between">
-//       <Link href="/">
-//         <Image src={imageUrl} alt={title} width={50} height={50} />
-//       </Link>
-//       <Navbar data={navigationLinks} />
-//     </header>
-//   );
-// }
-
-// export default Header;
-
 "use client";
 import Image from "next/image";
 import Navbar from "./Navbar";
@@ -101,7 +75,7 @@ function Header({ data }) {
       {/* Mobile Menu */}
       {menuOpen && (
         <div className="sm:hidden px-4 pb-4 z-1 absolute w-full" style={{ backgroundColor: "var(--accent-first)", boxShadow: "inset rgba(0,0,0,1)" }}>
-          <Navbar data={navigationLinks} isMobile={true} />
+          <Navbar data={navigationLinks} isMobile={true} onLinkClick={() => setMenuOpen(false)} />
         </div>
       )}
     </header>
