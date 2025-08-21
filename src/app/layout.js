@@ -22,7 +22,7 @@ export const metadata = {
 
  const headerData = await HeaderRepository.getInstance().getModels();
 
- console.log("Header Layout data:", headerData);
+//  console.log("Header Layout data:", headerData);
 
 export default function RootLayout({ children }) {
   return (

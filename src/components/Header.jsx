@@ -21,7 +21,7 @@ function Header({ data }) {
   // console.log("Header data:", data);
 
   return (
-    <header className="w-full flex flex-col items-center justify-center shadow-[inset_0px_-14px_16px_rgba(0,0,0,0.3)]">
+    <header className="w-full flex flex-col items-center justify-center shadow-[0_8px_12px_-6px_rgba(0,0,0,0.6)] sticky top-0 z-2 opacity-95">
       {/* Pre-Header */}
       <div
         className="w-full flex px-4 py-1.5 gap-1 items-center"
@@ -101,7 +101,7 @@ function Header({ data }) {
       {/* Mobile Menu */}
       {menuOpen && (
         <div
-          className="sm:hidden px-4 pb-4 z-1 absolute w-full"
+          className="sm:hidden px-4 pb-4 z-1 absolute w-full top-23"
           style={{
             backgroundColor: "var(--accent-first)",
             boxShadow: "inset rgba(0,0,0,1)",
