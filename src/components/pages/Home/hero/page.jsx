@@ -5,7 +5,7 @@ function Hero({ imageSrc, imageAlt, data }) {
   const heroTitle = data?.fields?.title;
   const heroSubTitle = data?.fields?.subTitle;
 
-  console.log("Hero Data:", data.fields);
+  // console.log("Hero Data:", data.fields);
   // console.log(Array.isArray(data), data.length);
   return (
     <section id="hero" className="w-full h-[500px] relative">
@@ -36,9 +36,9 @@ function Hero({ imageSrc, imageAlt, data }) {
           </Link>
           <Link
             href="#rooms"
-            className="bg-white text-black py-2 px-4 rounded sm:w-[150px] w-[120px] text-center"
+            className="border border-white py-2 px-4 rounded sm:w-[150px] w-[120px] text-center"
           >
-            Book
+            <span className="text-white">Book</span>
           </Link>
         </div>
       </div>
