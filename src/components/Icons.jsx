@@ -8,6 +8,7 @@ export function FacebookIcon({ size = 20, href = "https://facebook.com" }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label="Facebook"
       style={{
         display: "inline-block",
         width: size,
@@ -32,6 +33,7 @@ export function InstagramIcon({ size = 20, href = "https://instagram.com" }) {
       href={href}
       target="_blank"
       rel="noopener noreferrer"
+      aria-label="Instagram"
       style={{ display: "inline-block", width: size, height: size }}
     >
       <InstaIcon

@@ -1,13 +1,15 @@
 import Image from "next/image";
+import Link from "next/link";
 
 function Hero({ imageSrc, imageAlt, data }) {
   const heroTitle = data?.fields?.title;
+  const heroSubTitle = data?.fields?.subTitle;
 
-  // console.log("Hero Data:", data.fields); //the actual title
+  console.log("Hero Data:", data.fields);
   // console.log(Array.isArray(data), data.length);
   return (
-    <section id="hero" className="w-full max-h-[800px]">
-      <div className=" relative w-full aspect-[21/9] max-h-[500px] min-h-[400px] overflow-hidden">
+    <section id="hero" className="w-full h-[500px] relative">
+      <div className=" relative w-full aspect-[21/9] h-[500px] overflow-hidden">
         <Image
           src={imageSrc}
           alt={imageAlt}
@@ -15,11 +17,30 @@ function Hero({ imageSrc, imageAlt, data }) {
           priority
           fill
         />
-        <div className="absolute inset-0 bg-black/30"></div>
+        <div className="absolute inset-0 bg-black/50"></div>
       </div>
 
-      <div className="absolute z-0 inset-0 flex items-center justify-start">
-        <h1 className="text-red-900 text-4xl font-bold">{heroTitle}</h1>
+      <div className="absolute z-0 inset-0 flex flex-col sm:items-start items-center justify-center px-4 gap-4">
+        <h1 className="text-white md:text-4xl text-2xl font-bold max-w-[400px] sm:text-left text-center">
+          {heroTitle}
+        </h1>
+        <p className="text-white sm:text-lg text-sm max-w-[400px] sm:text-left text-center">
+          {heroSubTitle}
+        </p>
+        <div className="flex flex-row items-center justify-center gap-6">
+          <Link
+            href="#contact"
+            className="bg-white text-black py-2 px-4 rounded display-block sm:min-w-[150px] w-[120px] text-center"
+          >
+            Contact Us
+          </Link>
+          <Link
+            href="#rooms"
+            className="bg-white text-black py-2 px-4 rounded sm:w-[150px] w-[120px] text-center"
+          >
+            Book
+          </Link>
+        </div>
       </div>
     </section>
   );
