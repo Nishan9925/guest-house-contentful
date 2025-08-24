@@ -24,8 +24,7 @@ function Header({ data }) {
     <header className="w-full flex flex-col items-center justify-center shadow-[0_8px_12px_-6px_rgba(0,0,0,0.6)] sticky top-0 z-2 opacity-95">
       {/* Pre-Header */}
       <div
-        className="w-full flex px-4 py-1.5 gap-1 items-center"
-        style={{ backgroundColor: "var(--secondary)" }}
+        className="w-full flex px-4 py-1.5 gap-1 items-center bg-primary"
       >
         <a
           href={`tel:${phonenumber}`}
@@ -51,8 +50,8 @@ function Header({ data }) {
 
       {/* Header */}
       <div
-        style={{ backgroundColor: "var(--accent-first)" }}
-        className="w-[100%] mx-auto px-4 flex items-center justify-between p-2"
+        // style={{ backgroundColor: "var(--accent-first)" }}
+        className="w-[100%] mx-auto px-4 flex items-center justify-between p-2 bg-accent-first"
       >
         {/* Logo */}
         <Link href="/">

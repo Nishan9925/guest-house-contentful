@@ -16,7 +16,7 @@ const galleryData = await GalleryRepository.getInstance().getModels();
 
 
 export default function Home() {
-  console.log("Features Data:", featuresData);
+  console.log("Gallery Data:", galleryData);
   return (
     <>
       <Hero
