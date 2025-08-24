@@ -9,8 +9,7 @@ function Features({ data }) {
   );
   return (
     <section
-      style={{ backgroundColor: "var(--secondary)" }}
-      className="w-full flex-wrap flex justify-center items-center md:py-30 py-20 px-4 gap-4"
+      className="w-full flex-wrap flex justify-center items-center md:py-20 py-10 px-4 gap-4 bg-primary"
     >
       {data.map((feature, index) => (
         <div key={index} className="max-w-[260px] flex flex-col gap-6 ">
