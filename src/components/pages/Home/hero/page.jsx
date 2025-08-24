@@ -8,8 +8,8 @@ function Hero({ imageSrc, imageAlt, data }) {
   // console.log("Hero Data:", data.fields);
   // console.log(Array.isArray(data), data.length);
   return (
-    <section id="hero" className="w-full h-[500px] relative">
-      <div className=" relative w-full aspect-[21/9] h-[500px] overflow-hidden">
+    <section id="hero" className="w-full h-[500px] relative flex item-center">
+      <div className="relative w-full aspect-[21/9] h-[500px] overflow-hidden">
         <Image
           src={imageSrc}
           alt={imageAlt}

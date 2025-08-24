@@ -25,10 +25,10 @@ function Features({ data }) {
           </div>
           <div className="flex flex-col align-start gap-4">
             <h3 className="text-black text-lg">
-              <span style={{ color: "var(--accent-second)" }}>
+              <span className="text-accent-second">
                 {featureTitleFirstLetter[index]}
               </span>
-              <span>{featureTitleRest[index]}</span>
+              <span className="text-black">{featureTitleRest[index]}</span>
             </h3>
             <p className="text-black max-h-[100px] overflow-hidden text-sm">
               {feature.fields.featureDescription}
