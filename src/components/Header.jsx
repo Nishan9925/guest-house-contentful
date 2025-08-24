@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { useState } from "react";
 
-import { FacebookIcon, InstagramIcon, AccentBar } from "./Icons";
+import { FacebookIcon, InstagramIcon, SeparatorBar } from "./Icons";
 
 function Header({ data }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -23,9 +23,7 @@ function Header({ data }) {
   return (
     <header className="w-full flex flex-col items-center justify-center shadow-[0_8px_12px_-6px_rgba(0,0,0,0.6)] sticky top-0 z-2 opacity-95">
       {/* Pre-Header */}
-      <div
-        className="w-full flex px-4 py-1.5 gap-1 items-center bg-primary"
-      >
+      <div className="w-full flex px-4 py-1.5 gap-1 items-center bg-primary">
         <a
           href={`tel:${phonenumber}`}
           className="text-xs sm:text-sm"
@@ -33,7 +31,7 @@ function Header({ data }) {
         >
           {phonenumber}
         </a>
-        <AccentBar />
+        <SeparatorBar />
         <a
           href={`mailto:${email}`}
           className="text-xs sm:text-sm"
@@ -41,7 +39,7 @@ function Header({ data }) {
         >
           {email}
         </a>
-        <AccentBar />
+        <SeparatorBar />
         <div className="flex flex-row items-center justify-between gap-2 px-1">
           <FacebookIcon />
           <InstagramIcon />
@@ -71,7 +69,7 @@ function Header({ data }) {
             onClick={() => setMenuOpen(!menuOpen)}
           >
             <svg
-              className="w-6 h-6 text-accent-first"
+              className="w-6 h-6 color-accent-first"
               fill="none"
               stroke="currentColor"
               viewBox="0 0 24 24"
@@ -100,10 +98,10 @@ function Header({ data }) {
       {/* Mobile Menu */}
       {menuOpen && (
         <div
-          className="sm:hidden px-4 pb-4 z-1 absolute w-full top-23"
+          className="sm:hidden px-4 pb-4 z-1 absolute w-full top-23 bg-accent-first shadow-[inset_0_0_10px_rgba(0,0,0,1)]"
           style={{
-            backgroundColor: "var(--accent-first)",
-            boxShadow: "inset rgba(0,0,0,1)",
+            // backgroundColor: "var(--accent-first)",
+            // boxShadow: "inset rgba(0,0,0,1)",
           }}
         >
           <Navbar

@@ -47,12 +47,10 @@ export function InstagramIcon({ size = 20, href = "https://instagram.com" }) {
   );
 }
 
-export function AccentBar() {
+export function SeparatorBar() {
   return (
-    <div
+    <div className="bg-accent-first"
       style={{
-        backgroundColor: "var(--accent-first)",
-        // minWidth: "2px",
         height: "24px",
         borderRadius: "2px",
         display: "block",
