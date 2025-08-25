@@ -20,7 +20,7 @@ function Hero({ imageSrc, imageAlt, data }) {
         <div className="absolute inset-0 bg-black/50"></div>
       </div>
       <div className="flex justify-center items-center absolute z-0 inset-0">
-        <div className=" flex flex-col sm:items-start items-start justify-start px-4 gap-4 w-[1100px]">
+        <div className=" flex flex-col sm:items-start items-center justify-start px-4 gap-4 w-[1100px]">
           <h1 className="text-white md:text-4xl text-2xl font-bold max-w-[400px] sm:text-left text-center">
             {heroTitle}
           </h1>

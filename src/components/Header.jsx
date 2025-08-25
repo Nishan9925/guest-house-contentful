@@ -34,8 +34,7 @@ function Header({ data }) {
         <SeparatorBar />
         <a
           href={`mailto:${email}`}
-          className="text-xs sm:text-sm"
-          style={{ color: "var(--black)" }}
+          className="text-xs sm:text-sm text-black"
         >
           {email}
         </a>
