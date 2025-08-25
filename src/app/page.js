@@ -8,15 +8,17 @@ import HeroImg from "@/assets/images/hero.jpg";
 import FeaturesRepository from "./lib/Featues";
 import HeroRepository from "./lib/Hero";
 import GalleryRepository from "./lib/Gallery";
+import AboutRepository from "./lib/About";
 
 
 const [heroData] = await HeroRepository.getInstance().getModels();
 const featuresData = await FeaturesRepository.getInstance().getModels();
 const galleryData = await GalleryRepository.getInstance().getModels();
+const aboutData = await AboutRepository.getInstance().getModels();
 
 
 export default function Home() {
-  console.log("Gallery Data:", galleryData);
+  console.log("Home About Data:", aboutData);
   return (
     <>
       <Hero
@@ -28,8 +30,9 @@ export default function Home() {
         data={featuresData} />
       <About
         galleryData={galleryData}
-        />
-        {/* <Contact /> */}
+        aboutData={aboutData}
+      />
+      {/* <Contact /> */}
     </>
   );
 }
