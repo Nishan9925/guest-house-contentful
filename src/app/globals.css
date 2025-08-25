@@ -8,9 +8,9 @@
   --color-black: rgba(0, 0, 0, 1);
 }
 
-@tailwind base;
+/* @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
 
 @layer utilities {
   @keyframes infinite-slider {
