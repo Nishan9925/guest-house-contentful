@@ -42,18 +42,13 @@ function Navbar({ data, isMobile, onLinkClick }) {
                 href={href}
                 onClick={() => onLinkClick?.()}
                 className={`
-                  flex justify-end py-3 px-2 text-sm 
-                  ${isActive ? "border-b-2" : ""},
-                   ${
-                     isActive
-                       ? "text-blue-500 shadow-[inset_0_-2px_0_0_var(--accent-second)]"
-                       : ""
-                   }
-                `}
-                style={{
-                  color: isActive ? "var(--accent-second)" : "var(--primary)",
-                  fontWeight: isActive ? "600" : "400",
-                }}
+                          flex justify-end py-3 px-2 text-sm
+                          ${
+                            isActive
+                              ? "border-b-2 text-accent-second font-semibold shadow-[inset_0_-2px_0_0_var(--accent-second)]"
+                              : "text-primary font-normal"
+                          }
+                        `}
               >
                 {item.fields.label}
               </Link>
