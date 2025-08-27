@@ -21,12 +21,10 @@ const faqData = await FAQRepository.getInstance().getModels();
 
 
 export default function Home() {
-  console.log("Home About Data:", aboutData);
+  console.log("Home Hero Data:", galleryData);
   return (
     <>
       <Hero
-        imageSrc={HeroImg}
-        imageAlt="Hero Image"
         data={heroData}
       />
       <Features 

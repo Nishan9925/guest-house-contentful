@@ -34,3 +34,21 @@
 //   ],
 //   important: true,
 // };
+
+
+import flowbite from "flowbite/plugin";
+
+export default {
+  content: [
+    "./pages/**/*.{js,ts,jsx,tsx}",
+    "./components/**/*.{js,ts,jsx,tsx}",
+    "./app/**/*.{js,ts,jsx,tsx}",
+    "node_modules/flowbite/**/*.js"
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [
+    flowbite,
+  ],
+};

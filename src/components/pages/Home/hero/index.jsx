@@ -1,25 +1,19 @@
 import Image from "next/image";
 import Link from "next/link";
+import "flowbite";
+import HeroCarousel from "@/components/shared/HeroBanner/HeroCarousel";
 
-function Hero({ imageSrc, imageAlt, data }) {
+function Hero({ data }) {
   const heroTitle = data?.fields?.title;
   const heroSubTitle = data?.fields?.subTitle;
+  const images = data?.fields?.heroImages;
 
-  // console.log("Hero Data:", data.fields);
-  // console.log(Array.isArray(data), data.length);
+  console.log("Hero Data:", data?.fields?.heroImages);
   return (
     <section id="hero" className="w-full h-[500px] relative flex item-center">
-      <div className="relative w-full aspect-[21/9] h-[500px] overflow-hidden">
-        <Image
-          src={imageSrc}
-          alt={imageAlt}
-          className="object-cover"
-          priority
-          fill
-        />
-        <div className="absolute inset-0 bg-black/50"></div>
-      </div>
-      <div className="flex justify-center items-center absolute z-0 inset-0">
+      <HeroCarousel images={images} />
+
+      <div className="flex justify-center items-center absolute z-100 inset-0">
         <div className=" flex flex-col sm:items-start items-center justify-start px-4 gap-4 w-[1100px]">
           <h1 className="text-white md:text-4xl text-2xl font-bold max-w-[400px] sm:text-left text-center">
             {heroTitle}
