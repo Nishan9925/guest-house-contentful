@@ -10,6 +10,7 @@ import HeroRepository from "./lib/Hero";
 import GalleryRepository from "./lib/Gallery";
 import AboutRepository from "./lib/About";
 import FAQRepository from "./lib/FAQ";
+import FAQ from "@/components/pages/Home/faq";
 
 
 const [heroData] = await HeroRepository.getInstance().getModels();
@@ -34,7 +35,7 @@ export default function Home() {
         galleryData={galleryData}
         aboutData={aboutData}
       />
-      <FAQ 
+      <FAQ
         data={faqData} 
       />
       {/* <Contact /> */}

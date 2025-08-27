@@ -1,7 +1,9 @@
 function FAQ() {
-    
-    return (
 
+    return (
+        <section>
+            faq section
+        </section>
     )
 }
 
