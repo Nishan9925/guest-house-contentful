@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "flowbite/plugin";
 
 @theme {
   --color-primary: rgba(250, 249, 246, 1);

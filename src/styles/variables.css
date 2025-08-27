@@ -1,4 +1,4 @@
-:root {
+/* :root {
     --primary: rgba(250, 249, 246, 1);
     --secondary: rgba(255, 255, 255, 1);
     --accent-first: rgba(85, 107, 47, 1);
@@ -8,4 +8,4 @@
 
 @tailwind base;
 @tailwind components;
-@tailwind utilities;
+@tailwind utilities; */
