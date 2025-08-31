@@ -19,7 +19,7 @@ function HeroCarousel({ images }) {
       data-carousel="slide"
       data-carousel-interval="3000"
     >
-      <div className="relative h-[500px] overflow-hidden rounded-lg">
+      <div className="relative h-[500px] overflow-hidden">
         {images.map((asset, index) => (
           <div
             key={asset.sys.id || index}

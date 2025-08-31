@@ -10,7 +10,7 @@ function Hero({ data }) {
 
   console.log("Hero Data:", data?.fields?.heroImages);
   return (
-    <section id="hero" className="w-full h-[500px] relative flex item-center">
+    <section id="hero" className="w-full h-[500px] relative flex item-center z-1">
       <HeroCarousel images={images} />
 
       <div className="flex justify-center items-center absolute z-100 inset-0">
