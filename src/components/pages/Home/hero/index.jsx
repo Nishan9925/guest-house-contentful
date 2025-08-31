@@ -8,7 +8,6 @@ function Hero({ data }) {
   const heroSubTitle = data?.fields?.subTitle;
   const images = data?.fields?.heroImages;
 
-  // console.log("Hero Data:", data?.fields?.heroImages);
   return (
     <section id="hero" className="w-full h-[500px] relative flex item-center z-1">
       <HeroCarousel images={images} />

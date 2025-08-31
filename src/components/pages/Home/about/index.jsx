@@ -17,7 +17,7 @@ function About({ aboutData }) {
         <h2 className="md:text-4xl text:2xl text-black font-bold text-white">
           {title}
         </h2>
-        <div className="max-w-[1100px-2] mx-auto flex flex-wrap md:flex-row flex-col items-center md:gap-0 gap-10">
+        <div className="max-w-[1100px-2] mx-auto flex md:flex-row flex-col items-start md:gap-0 gap-10">
           <div className="md:w-1/2 w-full flex flex-col justify-center md:items-start items:center gap-3 px-2">
             <h3 className="md:text-xl text-lg text-white">{aboutUsTitle}</h3>
             <div className="text-base text-white text-start">

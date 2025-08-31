@@ -2,7 +2,7 @@ function FAQ() {
 
     return (
         <section>
-            faq section
+            faq sectiondklsaklfkdslfsd,fl,
         </section>
     )
 }
