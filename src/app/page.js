@@ -19,7 +19,7 @@ export default async function Home() {
   const galleryData = await GalleryRepository.getInstance().getModels();
   const aboutData = await AboutRepository.getInstance().getModels();
   const faqData = await FAQRepository.getInstance().getModels();
-
+console.log("Home Gallery Data:", galleryData);
   console.log("Home Hero Data:", galleryData);
   return (
     <>
@@ -28,10 +28,12 @@ export default async function Home() {
       />
       <Features 
         data={featuresData} />
+      <Gallery data={galleryData} />
       <About
-        galleryData={galleryData}
+        // galleryData={galleryData}
         aboutData={aboutData}
       />
+
       <FAQ
         data={faqData} 
       />
