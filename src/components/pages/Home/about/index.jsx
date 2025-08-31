@@ -25,6 +25,7 @@ function About({ aboutData }) {
             </div>
           </div>
           <div className="md:w-1/2 w-full flex flex-col justify-center items-center gap-3 px-2">
+          <div className='flex flex-col justify-center items-start gap-3'>
             <h3 className="md:text-xl text-lg  text-white">{infoTitle}</h3>
             <p className="text-base text-white md:text-start text-center">
               {email}
@@ -40,6 +41,7 @@ function About({ aboutData }) {
             >
               View on Google Maps
             </a>
+            </div>
           </div>
         </div>
       </div>
