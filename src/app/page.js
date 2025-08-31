@@ -19,6 +19,7 @@ export default async function Home() {
   const galleryData = await GalleryRepository.getInstance().getModels();
   const aboutData = await AboutRepository.getInstance().getModels();
   const faqData = await FAQRepository.getInstance().getModels();
+  console.log(faqData);
   return (
     <>
       <Hero
