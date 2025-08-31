@@ -1,6 +1,4 @@
-import Gallery from "@/components/shared/Gallery";
-
-function About({ galleryData, aboutData }) {
+function About({ aboutData }) {
   const data = aboutData[0];
   const title = data.fields.aboutUsTitle;
   const aboutUsTitle = data.fields.aboutGuestHouseTitle;
@@ -12,7 +10,6 @@ function About({ galleryData, aboutData }) {
   const addressLat = data.fields.guestHouseLocation.lat;
   return (
     <div id="about" className="flex flex-col justify-center items-center">
-      {/* <Gallery data={galleryData} /> */}
       <div className="w-full bg-accent-second md:py-20 py-10 px-4 flex flex-col text-center justify-center items-center md:gap-4 gap-2">
         <h2 className="md:text-4xl text:2xl text-black font-bold text-white">
           {title}

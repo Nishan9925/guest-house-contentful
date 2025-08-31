@@ -1,30 +1,39 @@
 "use client";
 import Image from "next/image";
 import { useEffect, useState } from "react";
-import "flowbite";
-
-// Fix the Hydration problem and ensure Flowbite initializes properly and the gallery animation properly"
 
 function HeroCarousel({ images }) {
-  // const [mounted, setMounted] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const [currentSlide, setCurrentSlide] = useState(0);
+
   useEffect(() => {
-    // setMounted(true);
-    // Flowbite auto-inits from data attributes
-  }, []);
-  // if(!mounted) return null;
+    setMounted(true);
+    
+    // Initialize carousel manually without Flowbite to avoid hydration issues
+    const interval = setInterval(() => {
+      setCurrentSlide((prev) => (prev + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, [images.length]);
+
+  // Prevent hydration mismatch by not rendering until mounted
+  if (!mounted) {
+    return (
+      <div className="relative w-full aspect-[21/9] h-[500px] overflow-hidden bg-gray-200">
+        <div className="absolute inset-0 bg-black/50 z-30"></div>
+      </div>
+    );
+  }
   return (
-    <div
-      id="hero-carousel"
-      className="relative w-full aspect-[21/9] h-[500px] overflow-hidden"
-      data-carousel="slide"
-      data-carousel-interval="3000"
-    >
+    <div className="relative w-full aspect-[21/9] h-[500px] overflow-hidden">
       <div className="relative h-[500px] overflow-hidden">
         {images.map((asset, index) => (
           <div
             key={asset.sys.id || index}
-            data-carousel-item={index === 0 ? "active" : ""}
-            className="hidden absolute inset-0 duration-700 ease-in-out"
+            className={`absolute inset-0 duration-700 ease-in-out transition-opacity ${
+              index === currentSlide ? 'opacity-100' : 'opacity-0'
+            }`}
           >
             <Image
               src={`https:${asset.fields.file.url}`}

@@ -11,16 +11,15 @@ import GalleryRepository from "./lib/Gallery";
 import AboutRepository from "./lib/About";
 import FAQRepository from "./lib/FAQ";
 import FAQ from "@/components/pages/Home/faq";
+import Gallery from "@/components/shared/Gallery";
 
+export default async function Home() {
+  const [heroData] = await HeroRepository.getInstance().getModels();
+  const featuresData = await FeaturesRepository.getInstance().getModels();
+  const galleryData = await GalleryRepository.getInstance().getModels();
+  const aboutData = await AboutRepository.getInstance().getModels();
+  const faqData = await FAQRepository.getInstance().getModels();
 
-const [heroData] = await HeroRepository.getInstance().getModels();
-const featuresData = await FeaturesRepository.getInstance().getModels();
-const galleryData = await GalleryRepository.getInstance().getModels();
-const aboutData = await AboutRepository.getInstance().getModels();
-const faqData = await FAQRepository.getInstance().getModels();
-
-
-export default function Home() {
   console.log("Home Hero Data:", galleryData);
   return (
     <>

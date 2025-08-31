@@ -45,8 +45,8 @@ function Navbar({ data, isMobile, onLinkClick }) {
                           flex justify-end py-3 px-2 text-sm
                           ${
                             isActive
-                              ? "border-b-2 text-accent-second font-semibold shadow-[inset_0_-2px_0_0_var(--accent-second)]"
-                              : "text-primary font-normal"
+                              ? "border-b-2 text-[var(--color-primary)] font-semibold shadow-[inset_0_-2px_0_0_var(--color-primary)]"
+                              : "text-[var(--color-primary)] font-normal"
                           }
                         `}
               >
