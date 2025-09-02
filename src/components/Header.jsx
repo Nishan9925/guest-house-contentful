@@ -3,12 +3,28 @@ import Image from "next/image";
 import Navbar from "./Navbar";
 import Link from "next/link";
 
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 import { BookingIcon, FacebookIcon, SeparatorBar } from "./Icons";
 
 function Header({ data }) {
   const [menuOpen, setMenuOpen] = useState(false);
+
+  // Block scroll when mobile menu is open
+  useEffect(() => {
+    if (menuOpen) {
+      // Disable scroll
+      document.body.style.overflow = 'hidden';
+    } else {
+      // Enable scroll
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function to restore scroll when component unmounts
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [menuOpen]);
   
   const logo = data?.[0]?.fields?.logo?.fields;
   const imageUrl = logo?.file?.url ? `https:${logo.file.url}` : null;

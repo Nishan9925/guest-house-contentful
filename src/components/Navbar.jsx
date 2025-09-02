@@ -81,12 +81,23 @@ function Navbar({ data, isMobile, onLinkClick }) {
     };
   }, []);
 
-  if (!data) return <nav>Loading...</nav>;
+  if (!data || !Array.isArray(data)) return <nav>Loading...</nav>;
+
+  // Filter out invalid navigation items
+  const validNavItems = data.filter(item => 
+    item && 
+    item.fields && 
+    item.fields.url && 
+    item.fields.label &&
+    item.sys &&
+    item.sys.id
+  );
 
   return (
     <nav>
       <ul className={`flex ${isMobile ? "flex-col" : "gap-4"}`}>
-        {data.map((item) => {
+        {validNavItems.map((item) => {
+          
           let href = item.fields.url;
           const label = item.fields.label;
           
@@ -94,21 +105,15 @@ function Navbar({ data, isMobile, onLinkClick }) {
           if (href === "/rooms") href = "#rooms";
           if (href === "/" && label.toLowerCase().includes("home")) href = "#hero";
           
-          // Debug: Log navigation items and current state
-          console.log(`Nav Item: "${label}" -> original: "${item.fields.url}", converted: "${href}"`);
-          console.log(`Current hash: "${currentHash}", Pathname: "${pathname}"`);
-          
           // Check if this nav item should be active
           let isActive = false;
           
           if (href.startsWith("#")) {
             // Hash links - compare with current hash from URL
             isActive = currentHash === href;
-            console.log(`Hash link "${href}" active: ${isActive}`);
           } else {
             // Regular links - compare with current pathname
             isActive = pathname === href;
-            console.log(`Regular link "${href}" active: ${isActive}`);
           }
 
           return (
