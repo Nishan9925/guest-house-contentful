@@ -1,5 +1,6 @@
-import { PhoneIcon } from '@/components/Icons';
+import { EnvelopeIcon, MarkerIcon, PhoneIcon } from '@/components/Icons';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+import Link from 'next/link';
 
 function About({ aboutData }) {
   const data = aboutData[0];
@@ -9,8 +10,10 @@ function About({ aboutData }) {
   const infoTitle = data.fields.infoGuestHouseTitle;
   const email = data.fields.email;
   const phoneNumber = data.fields.phoneNumber;
-  const addressLon = data.fields.guestHouseLocation.lon;
-  const addressLat = data.fields.guestHouseLocation.lat;
+  const addressTitle = data.fields.addressTitle;
+  const lat = data.fields.guestHouseLocation.lat;
+  const lng = data.fields.guestHouseLocation.lng;
+  console.log(data.fields.guestHouseLocation.lat);
   
   return (
     <div id="about" className="flex flex-col justify-center items-center">
@@ -26,25 +29,11 @@ function About({ aboutData }) {
             </div>
           </div>
           <div className="md:w-1/2 w-full flex flex-col justify-center items-center gap-3 px-2">
-          <div className='flex flex-col justify-center items-start gap-3'>
-            <h3 className="md:text-xl text-lg  text-white">{infoTitle}</h3>
-            <p className="text-base text-white md:text-start text-center">
-              {email}
-            </p>
-            <div>
-              <PhoneIcon />
-              <p className="text-base text-white md:text-start text-center">
-                {phoneNumber}
-              </p>
-            </div>
-            <a
-              className="text-base text-white md:text-start text-center"
-              href={`https://www.google.com/maps?q=${addressLat},${addressLon}`}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              View on Google Maps
-            </a>
+            <div className='flex flex-col justify-center items-start gap-3'>
+              <h3 className="md:text-xl text-lg  text-white">{infoTitle}</h3>
+              <EnvelopeIcon email={email} />
+              <PhoneIcon phoneNumber={phoneNumber} />
+              <MarkerIcon addressTitle={addressTitle} lng={lng} lat={lat} />
             </div>
           </div>
         </div>
