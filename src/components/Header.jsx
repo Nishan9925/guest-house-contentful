@@ -5,7 +5,7 @@ import Link from "next/link";
 
 import { useState } from "react";
 
-import { FacebookIcon, InstagramIcon, SeparatorBar } from "./Icons";
+import { BookingIcon, FacebookIcon, SeparatorBar } from "./Icons";
 
 function Header({ data }) {
   const [menuOpen, setMenuOpen] = useState(false);
@@ -41,7 +41,7 @@ function Header({ data }) {
         <SeparatorBar />
         <div className="flex flex-row items-center justify-between gap-2 px-1">
           <FacebookIcon />
-          <InstagramIcon />
+          <BookingIcon />
         </div>
       </div>
 
