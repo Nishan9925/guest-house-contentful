@@ -1,3 +1,4 @@
+import { PhoneIcon } from '@/components/Icons';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 function About({ aboutData }) {
@@ -30,9 +31,12 @@ function About({ aboutData }) {
             <p className="text-base text-white md:text-start text-center">
               {email}
             </p>
-            <p className="text-base text-white md:text-start text-center">
-              {phoneNumber}
-            </p>
+            <div>
+              <PhoneIcon />
+              <p className="text-base text-white md:text-start text-center">
+                {phoneNumber}
+              </p>
+            </div>
             <a
               className="text-base text-white md:text-start text-center"
               href={`https://www.google.com/maps?q=${addressLat},${addressLon}`}
