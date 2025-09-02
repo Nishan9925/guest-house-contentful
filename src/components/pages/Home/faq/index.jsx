@@ -59,7 +59,7 @@ function FAQ({ data }) {
   };
 
   return (
-    <section className="bg-secondary w-full py-16 px-4">
+    <section id="faq" className="bg-secondary w-full py-16 px-4">
       <div className="max-w-4xl mx-auto">
         <h2 className="text-3xl font-bold text-center text-black mb-12">
             FAQs about Arevik B&B

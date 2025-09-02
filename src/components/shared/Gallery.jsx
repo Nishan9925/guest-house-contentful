@@ -6,7 +6,7 @@ function Gallery({ data }) {
   const images = Array.from({ length: 3 }, () => data).flat();
   
   return (
-    <section className="relative w-full overflow-hidden m-auto">
+    <section id="gallery" className="relative w-full overflow-hidden m-auto">
       <div className="flex animate-infinite-slider w-max">
         {images.map((item, index) => {
           // Safe access to nested properties

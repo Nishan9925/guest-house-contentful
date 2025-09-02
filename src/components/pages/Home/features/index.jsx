@@ -9,6 +9,7 @@ function Features({ data }) {
   );
   return (
     <section
+      id="rooms"
       className="w-full flex-wrap flex justify-center items-center md:py-20 py-10 px-4 gap-4 bg-primary"
     >
       {data.map((feature, index) => (
