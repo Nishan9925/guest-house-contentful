@@ -13,7 +13,6 @@ function About({ aboutData }) {
   const addressTitle = data.fields.addressTitle;
   const lat = data.fields.guestHouseLocation.lat;
   const lng = data.fields.guestHouseLocation.lng;
-  console.log(data.fields.guestHouseLocation.lat);
   
   return (
     <div id="about" className="flex flex-col justify-center items-center">

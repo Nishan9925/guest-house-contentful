@@ -18,23 +18,29 @@ export default async function Home() {
   const featuresData = await FeaturesRepository.getInstance().getModels();
   const galleryData = await GalleryRepository.getInstance().getModels();
   const aboutData = await AboutRepository.getInstance().getModels();
+  const email = aboutData[0].fields.email;
+  const phoneNumber = aboutData[0].fields.phoneNumber;
+  console.log("jksadnjksan", phoneNumber, email);
   const faqData = await FAQRepository.getInstance().getModels();
-  console.log(faqData);
+
+  console.log("jksadnjksan", email);
+
   return (
     <>
       <Hero
+        email={email}
+        phoneNumber={phoneNumber}
         data={heroData}
       />
-      <Features 
+      <Features
         data={featuresData} />
       <Gallery data={galleryData} />
       <About
-        // galleryData={galleryData}
         aboutData={aboutData}
       />
 
       <FAQ
-        data={faqData} 
+        data={faqData}
       />
       {/* <Contact /> */}
     </>

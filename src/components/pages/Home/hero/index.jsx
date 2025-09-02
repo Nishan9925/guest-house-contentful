@@ -3,7 +3,8 @@ import Link from "next/link";
 import "flowbite";
 import HeroCarousel from "@/components/shared/HeroBanner/HeroCarousel";
 
-function Hero({ data }) {
+function Hero({ data, email, phoneNumber }) {
+  console.log("jksadnjksan", email, phoneNumber);
   const heroTitle = data?.fields?.title;
   const heroSubTitle = data?.fields?.subTitle;
   const images = data?.fields?.heroImages;
@@ -22,13 +23,13 @@ function Hero({ data }) {
           </p>
           <div className="flex flex-row items-center justify-center gap-6">
             <Link
-              href="#contact"
+              href={`mailto:${email}`}
               className="bg-white text-black py-2 px-4 rounded display-block sm:min-w-[150px] w-[120px] text-center"
             >
               Contact Us
             </Link>
             <Link
-              href = "tel:+37496109959"
+              href = {`tel:${phoneNumber}`}
               className="border border-white py-2 px-4 rounded sm:w-[150px] w-[120px] text-center"
             >
               <span className="text-white">Book</span>
