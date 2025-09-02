@@ -1,9 +1,9 @@
 import FacebookIconSVG from "../assets/icons/facebook-icon.svg";
-import InstaIcon from "../assets/icons/instagram-icon.svg";
+import InstagramIconSVG from "../assets/icons/instagram-icon.svg";
 // Booking.com SVG component
 import Link from "next/link";
 
-export function FacebookIcon({ size = 26, href = "https://facebook.com" }) {
+export function FacebookIcon({ size = 24, href = "https://facebook.com" }) {
   return (
     <Link
       href={href}
@@ -37,7 +37,7 @@ export function InstagramIcon({ size = 20, href = "https://instagram.com" }) {
       aria-label="Instagram"
       style={{ display: "inline-block", width: size, height: size }}
     >
-      <InstaIcon
+      <InstagramIconSVG
         stroke="black"
         fill="black"
         strokeWidth="1"
@@ -88,6 +88,19 @@ export function BookingIcon({ size = 24, href = "https://www.booking.com/hotel/a
           <path fill="#00bafc" d="M1794.688 1828.066c0-89.492 72.178-161.894 161.107-161.894 89.154 0 161.669 72.402 161.669 161.894 0 89.379-72.515 161.894-161.67 161.894-88.928 0-161.106-72.515-161.106-161.894"></path>
         </g>
       </svg>
+    </Link>
+  )
+}
+
+export function PhoneIcon({ size = 24, href = "tel:+37496109959" }) {
+  return (
+    <Link
+      href={href}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Phone"
+      style={{ display: "inline-block", width: size, height: size }}
+    >
     </Link>
   )
 }
