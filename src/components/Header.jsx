@@ -9,7 +9,7 @@ import { BookingIcon, FacebookIcon, SeparatorBar } from "./Icons";
 
 function Header({ data }) {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  
   const logo = data?.[0]?.fields?.logo?.fields;
   const imageUrl = logo?.file?.url ? `https:${logo.file.url}` : null;
   const title = data?.[0]?.fields?.logoAltText || "Logo";
@@ -21,7 +21,7 @@ function Header({ data }) {
   // console.log("Header data:", data);
 
   return (
-    <header className="w-full flex flex-col items-center justify-center shadow-[0_8px_12px_-6px_rgba(0,0,0,0.6)] sticky top-0 z-50 opacity-95">
+    <header className="w-full flex flex-col items-center justify-center shadow-[0_8px_12px_-6px_rgba(0,0,0,0.6)] sticky top-0 z-50 ">
       {/* Pre-Header */}
       <div className="w-full flex px-4 py-1.5 gap-1 items-center bg-primary ">
         <a
