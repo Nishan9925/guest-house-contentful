@@ -28,7 +28,7 @@ function Hero({ data }) {
               Contact Us
             </Link>
             <Link
-              href="#rooms"
+              href = "tel:+37496109959"
               className="border border-white py-2 px-4 rounded sm:w-[150px] w-[120px] text-center"
             >
               <span className="text-white">Book</span>

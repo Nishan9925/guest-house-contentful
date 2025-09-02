@@ -126,10 +126,10 @@ export function PhoneIcon({ size = 18, href = "tel:+37496109959", phoneNumber })
   )
 }
 
-export function EnvelopeIcon({ size = 18, href = "mailto:info@example.com", email }) {
+export function EnvelopeIcon({ size = 18, email }) {
   return (
     <Link
-      href={href}
+      href={`mailto:${email}`}
       rel="noopener noreferrer"
       aria-label="Email"
       className="flex flex-row items-center justify-center gap-2 hover:opacity-80 transition-opacity duration-200"
