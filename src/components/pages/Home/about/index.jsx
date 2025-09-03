@@ -28,7 +28,7 @@ function About({ aboutData }) {
               {documentToReactComponents(aboutUsDescription)}
             </div>
           </div>
-          <div className="md:w-1/2 w-full h-96 flex flex-col justify-start items-center gap-4 px-2">
+          <div className="md:w-1/2 w-full h-96 flex flex-col justify-start md:items-center items-start gap-4 px-2">
             <div className="md:w-1/2 flex flex-col justify-center items-start gap-3">
               <h3 className="md:text-xl text-lg text-white">{infoTitle}</h3>
               <EnvelopeIcon email={email} />
