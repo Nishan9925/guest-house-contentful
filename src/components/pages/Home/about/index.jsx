@@ -13,7 +13,7 @@ function About({ aboutData }) {
   const addressTitle = data.fields.addressTitle;
   const lat = data.fields.guestHouseLocation.lat;
   const lng = data.fields.guestHouseLocation.lng;
-  console.log(data.fields);
+  const aboutUsFasilities = data.fields.aboutUsFasilities;
   
   return (
     <div id="about" className="flex flex-col justify-center items-center">
@@ -28,15 +28,15 @@ function About({ aboutData }) {
               {documentToReactComponents(aboutUsDescription)}
             </div>
           </div>
-          <div className="md:w-1/2 w-full flex flex-col justify-between items-center gap-3 px-2">
-            <div className='flex flex-col justify-center items-start gap-3'>
-              <h3 className="md:text-xl text-lg  text-white">{infoTitle}</h3>
+          <div className="md:w-1/2 w-full h-96 flex flex-col justify-evenly items-center gap-4 px-2">
+            <div className="md:w-1/2 flex flex-col justify-center items-start gap-3">
+              <h3 className="md:text-xl text-lg text-white">{infoTitle}</h3>
               <EnvelopeIcon email={email} />
               <PhoneIcon phoneNumber={phoneNumber} />
               <MarkerIcon addressTitle={addressTitle} lng={lng} lat={lat} />
             </div>
-            <div>
-
+            <div className="md:w-1/2 flex flex-col justify-center items-start gap-3">
+              <h3 className="md:text-xl text-lg text-white">{aboutUsFasilities}</h3>
             </div>
           </div>
         </div>
