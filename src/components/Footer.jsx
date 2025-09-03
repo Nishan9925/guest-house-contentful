@@ -1,6 +1,5 @@
-"use client";
 import Link from "next/link";
-import { FacebookIcon, InstagramIcon, BookingIcon, SeparatorBar } from "./Icons";
+import { FacebookIcon, BookingIcon, SeparatorBar } from "./Icons";
 
 function Footer({ data }) {
   // Extract navigation links from data
