@@ -1,4 +1,4 @@
-import { EnvelopeIcon, MarkerIcon, PhoneIcon } from '@/components/Icons';
+import { AirportShuttleIcon, EnvelopeIcon, MarkerIcon, PhoneIcon } from '@/components/Icons';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Link from 'next/link';
 
@@ -28,7 +28,7 @@ function About({ aboutData }) {
               {documentToReactComponents(aboutUsDescription)}
             </div>
           </div>
-          <div className="md:w-1/2 w-full h-96 flex flex-col justify-evenly items-center gap-4 px-2">
+          <div className="md:w-1/2 w-full h-96 flex flex-col justify-start items-center gap-4 px-2">
             <div className="md:w-1/2 flex flex-col justify-center items-start gap-3">
               <h3 className="md:text-xl text-lg text-white">{infoTitle}</h3>
               <EnvelopeIcon email={email} />
@@ -37,6 +37,9 @@ function About({ aboutData }) {
             </div>
             <div className="md:w-1/2 flex flex-col justify-center items-start gap-3">
               <h3 className="md:text-xl text-lg text-white">{aboutUsFasilities}</h3>
+              <div className='flex flex-row items-center gap-3'>
+                <AirportShuttleIcon text={"Airport shuttle"} />
+              </div>
             </div>
           </div>
         </div>
