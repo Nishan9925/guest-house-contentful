@@ -4,7 +4,6 @@ import "flowbite";
 import HeroCarousel from "@/components/shared/HeroBanner/HeroCarousel";
 
 function Hero({ data, email, phoneNumber }) {
-  console.log("jksadnjksan", email, phoneNumber);
   const heroTitle = data?.fields?.title;
   const heroSubTitle = data?.fields?.subTitle;
   const images = data?.fields?.heroImages;

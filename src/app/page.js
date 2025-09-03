@@ -20,10 +20,7 @@ export default async function Home() {
   const aboutData = await AboutRepository.getInstance().getModels();
   const email = aboutData[0].fields.email;
   const phoneNumber = aboutData[0].fields.phoneNumber;
-  console.log("jksadnjksan", phoneNumber, email);
   const faqData = await FAQRepository.getInstance().getModels();
-
-  console.log("jksadnjksan", email);
 
   return (
     <>

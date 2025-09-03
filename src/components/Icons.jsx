@@ -180,3 +180,4 @@ export function MarkerIcon({ size = 18, addressTitle, lng, lat }) {
     </Link>
   )
 }
+

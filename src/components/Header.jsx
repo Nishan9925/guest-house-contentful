@@ -33,8 +33,7 @@ function Header({ data }) {
   const email = data?.[0]?.fields?.emailAddress;
   const navigationLinks = data?.[0]?.fields?.navigationLinks || [];
 
-  if (!data) return <header>Loading...</header>;
-  // console.log("Header data:", data);
+  if (!data) return <header>Loading...</header>;;
 
   return (
     <header className="w-full flex flex-col items-center justify-center shadow-[0_8px_12px_-6px_rgba(0,0,0,0.6)] sticky top-0 z-50 ">
