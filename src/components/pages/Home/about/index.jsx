@@ -16,7 +16,7 @@ function About({ aboutData }) {
   
   return (
     <div id="about" className="flex flex-col justify-center items-center">
-      <div className="w-full bg-accent-second md:py-20 py-10 px-4 flex flex-col text-center justify-center items-center md:gap-4 gap-2">
+      <div className="w-full bg-accent-second md:py-10 py-5 px-4 flex flex-col text-center justify-center items-center md:gap-4 gap-2">
         <h2 className="md:text-4xl text:2xl text-black font-bold text-white">
           {title}
         </h2>
@@ -24,7 +24,7 @@ function About({ aboutData }) {
           <div className="md:w-1/2 w-full flex flex-col justify-center md:items-start items:center gap-3 px-2">
             <h3 className="md:text-xl text-lg text-white">{aboutUsTitle}</h3>
             <div className="text-base text-white text-start">
-              {aboutUsDescription && documentToReactComponents(aboutUsDescription)}
+              {documentToReactComponents(aboutUsDescription)}
             </div>
           </div>
           <div className="md:w-1/2 w-full flex flex-col justify-center items-center gap-3 px-2">
