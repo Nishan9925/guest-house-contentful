@@ -77,8 +77,6 @@ function Footer({ data }) {
           <div className="flex items-center gap-3">
             <FacebookIcon size={20} />
             <SeparatorBar />
-            <InstagramIcon size={20} />
-            <SeparatorBar />
             <BookingIcon size={20} />
           </div>
         </div>
