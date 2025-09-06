@@ -26,6 +26,7 @@ function Navbar({ isMobile, onLinkClick }) {
     // Only run on home page
     // Update current hash from URL
     const updateHash = () => {
+      console.log("Updating hash to:", window.location.hash);
       setCurrentHash(window.location.hash);
     };
 
@@ -65,6 +66,7 @@ function Navbar({ isMobile, onLinkClick }) {
       // Handle hash changes from URL
       const handleHashChange = () => {
         const hash = window.location.hash || "#hero";
+        console.log("Hash changed to:", hash);
         setCurrentHash(hash);
         
         const element = document.querySelector(hash);
@@ -86,6 +88,7 @@ function Navbar({ isMobile, onLinkClick }) {
   const isActiveLink = (href) => {
     if (pathname === "/") {
       // On home page - check hash
+      console.log("Current hash:", currentHash, "Checking href:", href);
       if (href === "/#hero") {
         return !currentHash || currentHash === "#hero";
       } else if (href === "/#rooms") {
@@ -93,8 +96,11 @@ function Navbar({ isMobile, onLinkClick }) {
       } else if (href === "/#about") {
         return currentHash === "#about";
       }
+    } else if (pathname.startsWith("/rooms/")) {
+      // On individual room slug pages (/rooms/[slug]) - no nav items are active
+      return false;
     }
-    // On room slug pages (/rooms/[slug]) - no nav items are active
+    // For other pages, no items are active
     return false;
   };
 
@@ -115,6 +121,16 @@ function Navbar({ isMobile, onLinkClick }) {
                     window.location.replace(link.href);
                     return;
                   }
+                  
+                  // If on home page, manually update hash state after navigation
+                  if (pathname === "/" && link.href.startsWith("/#")) {
+                    setTimeout(() => {
+                      const newHash = window.location.hash;
+                      console.log("Manual hash update after click:", newHash);
+                      setCurrentHash(newHash);
+                    }, 100);
+                  }
+                  
                   onLinkClick?.();
                 }}
                 className={`
