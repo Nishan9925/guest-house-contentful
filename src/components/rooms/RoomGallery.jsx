@@ -78,7 +78,7 @@ function RoomGallery({ images = [] }) {
             className="break-inside-avoid block w-full text-left"
           >
             <Image
-              className="w-full h-auto rounded-lg hover:scale-[1.02] transition-transform duration-300"
+              className="w-full h-auto rounded-lg hover:scale-[1.02] transition-transform duration-300 m-2"
               src={image.url}
               alt={image.alt || ''}
               width={400}
