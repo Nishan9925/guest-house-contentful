@@ -1,4 +1,4 @@
-import { AirportShuttleIcon, EnvelopeIcon, MarkerIcon, PhoneIcon } from '@/components/Icons';
+import { AirportShuttleIcon, EnvelopeIcon, FamilyRoomIcon, FreeParkingIcon, FreeWiFiIcon, MarkerIcon, NoSmokingIcon, PhoneIcon } from '@/components/Icons';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import Link from 'next/link';
 
@@ -14,7 +14,7 @@ function About({ aboutData }) {
   const lat = data.fields.guestHouseLocation.lat;
   const lng = data.fields.guestHouseLocation.lng;
   const aboutUsFasilities = data.fields.aboutUsFasilities;
-  
+
   return (
     <div id="about" className="flex flex-col justify-center items-center">
       <div className="w-full bg-accent-second md:py-10 py-5 px-4 flex flex-col text-center justify-center items-center md:gap-4 gap-2">
@@ -37,8 +37,12 @@ function About({ aboutData }) {
             </div>
             <div className="md:w-full flex flex-col justify-center items-start gap-3">
               <h3 className="md:text-xl text-lg text-white">{aboutUsFasilities}</h3>
-              <div className='flex flex-row items-center gap-3'>
+              <div className='flex flex-col items-start gap-3'>
                 <AirportShuttleIcon text={"Airport shuttle"} />
+                <NoSmokingIcon text={"No smoking"} />
+                <FreeParkingIcon text={"Free parking"} />
+                <FreeWiFiIcon text={"Free WiFi"} />
+                <FamilyRoomIcon text={"Family rooms"} />
               </div>
             </div>
           </div>
