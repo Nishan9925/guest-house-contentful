@@ -1,5 +1,5 @@
-import BaseRepository from "./BaseRepository";
+// import BaseRepository from "./BaseRepository";
 
-export default class FeaturesRepository extends BaseRepository {
-    static contentType = "features";
-}
+// export default class FeaturesRepository extends BaseRepository {
+//     static contentType = "features";
+// }

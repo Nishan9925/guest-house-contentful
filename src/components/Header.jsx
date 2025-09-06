@@ -41,8 +41,7 @@ function Header({ data }) {
       <div className="w-full flex px-4 py-1.5 gap-1 items-center bg-primary ">
         <a
           href={`tel:${phonenumber}`}
-          className="text-xs sm:text-sm"
-          style={{ color: "var(--black)" }}
+          className="text-xs sm:text-sm text-black"
         >
           {phonenumber}
         </a>
