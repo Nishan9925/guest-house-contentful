@@ -69,7 +69,7 @@ function RoomGallery({ images = [] }) {
 
   return (
     <>
-      <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4">
+      <div className="columns-2 md:columns-3 lg:columns-4">
         {images.map((image, index) => (
           <button
             key={image.id || index}
