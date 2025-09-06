@@ -83,7 +83,7 @@ function RoomGallery({ images = [] }) {
               <button
                 type="button"
                 onClick={showPrev}
-                className="absolute left-4 top-1/2 -translate-y-1/2 text-white bg-black/50 rounded-full p-3 hover:bg-black/70"
+                className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white bg-black/50 rounded-full p-3 hover:bg-black/70"
               >
                 <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
@@ -103,7 +103,7 @@ function RoomGallery({ images = [] }) {
               <button
                 type="button"
                 onClick={showNext}
-                className="absolute right-4 top-1/2 -translate-y-1/2 text-white bg-black/50 rounded-full p-3 hover:bg-black/70"
+                className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white bg-black/50 rounded-full p-3 hover:bg-black/70"
               >
                 <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
                   <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
@@ -118,7 +118,7 @@ function RoomGallery({ images = [] }) {
                     key={img.id || idx}
                     type="button"
                     onClick={() => setCurrentIndex(idx)}
-                    className={`relative h-16 w-24 rounded overflow-hidden border-2 ${
+                    className={`relative h-16 w-24 rounded  border-2 ${
                       idx === currentIndex ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'
                     }`}
                   >
