@@ -14,6 +14,16 @@ function Navbar({ isMobile, onLinkClick }) {
   ];
 
   useEffect(() => {
+    // Clear hash when not on home page
+    if (pathname !== "/") {
+      if (window.location.hash) {
+        window.history.replaceState(null, null, window.location.pathname);
+      }
+      setCurrentHash("");
+      return;
+    }
+
+    // Only run on home page
     // Update current hash from URL
     const updateHash = () => {
       setCurrentHash(window.location.hash);
@@ -21,9 +31,6 @@ function Navbar({ isMobile, onLinkClick }) {
 
     // Set initial hash
     updateHash();
-
-    // Only run scroll spy on home page
-    if (pathname === "/") {
       // Scroll spy - update URL based on scroll position
       const handleScroll = () => {
         const sections = [
@@ -73,7 +80,6 @@ function Navbar({ isMobile, onLinkClick }) {
         window.removeEventListener("scroll", handleScroll);
         window.removeEventListener("hashchange", handleHashChange);
       };
-    }
   }, [pathname]);
 
   // Function to check if a link is active
@@ -87,10 +93,8 @@ function Navbar({ isMobile, onLinkClick }) {
       } else if (href === "/#about") {
         return currentHash === "#about";
       }
-    } else if (pathname.startsWith("/rooms")) {
-      // On any room page (including /rooms/[slug]) - Rooms link is active
-      return href === "/#rooms";
     }
+    // On room slug pages (/rooms/[slug]) - no nav items are active
     return false;
   };
 
