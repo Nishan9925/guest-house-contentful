@@ -1,6 +1,6 @@
 'use client';
 
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 
 function RoomGallery({ images = [] }) {
@@ -22,6 +22,34 @@ function RoomGallery({ images = [] }) {
 
   const showNext = () => {
     setCurrentIndex((prev) => (prev + 1) % images.length);
+  };
+
+  // Swipe handling (mobile)
+  const startX = useRef(0);
+  const startY = useRef(0);
+  const moved = useRef(false);
+  const handleTouchStart = (e) => {
+    if (!e.touches || e.touches.length === 0) return;
+    startX.current = e.touches[0].clientX;
+    startY.current = e.touches[0].clientY;
+    moved.current = false;
+  };
+  const handleTouchMove = () => {
+    moved.current = true;
+  };
+  const handleTouchEnd = (e) => {
+    if (!moved.current || !e.changedTouches || e.changedTouches.length === 0) return;
+    const dx = e.changedTouches[0].clientX - startX.current;
+    const dy = e.changedTouches[0].clientY - startY.current;
+    const horizontalThreshold = 40;
+    const verticalAllowance = 80;
+    if (Math.abs(dx) > horizontalThreshold && Math.abs(dy) < verticalAllowance) {
+      if (dx < 0) {
+        showNext();
+      } else {
+        showPrev();
+      }
+    }
   };
 
   useEffect(() => {
@@ -90,12 +118,18 @@ function RoomGallery({ images = [] }) {
                 </svg>
               </button>
 
-              <div className="relative w-full h-[80vh]">
+              <div
+                className="relative w-full h-[80vh]"
+                onTouchStart={handleTouchStart}
+                onTouchMove={handleTouchMove}
+                onTouchEnd={handleTouchEnd}
+              >
                 <Image
                   src={images[currentIndex].url}
                   alt={images[currentIndex].alt || ''}
                   fill
                   className="object-contain"
+                  draggable={false}
                   priority
                 />
               </div>
@@ -118,9 +152,8 @@ function RoomGallery({ images = [] }) {
                     key={img.id || idx}
                     type="button"
                     onClick={() => setCurrentIndex(idx)}
-                    className={`relative h-16 w-24 rounded  border-2 ${
-                      idx === currentIndex ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'
-                    }`}
+                    className={`relative h-16 w-24 rounded  border-2 ${idx === currentIndex ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'
+                      }`}
                   >
                     <Image src={img.url} alt={img.alt || ''} fill className="object-cover" />
                   </button>
