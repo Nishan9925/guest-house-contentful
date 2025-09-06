@@ -6,16 +6,10 @@ import { documentToReactComponents } from '@contentful/rich-text-react-renderer'
 export const dynamicParams = true;
 
 export default async function RoomPage({ params }) {
-    console.log("Params", params);
     const slug = params?.slug;
-    console.log("Looking for slug:", slug);
     
     try {
         const room = await RoomsRepository.getInstance().getBySlug(slug, {}, false);
-        console.log("Room found:", room ? "YES" : "NO");
-        if (room) {
-            console.log("Room fields:", Object.keys(room.fields || {}));
-        }
 
         if (!room) {
             notFound();

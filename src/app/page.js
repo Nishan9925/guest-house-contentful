@@ -27,7 +27,9 @@ console.log("First room fields:", roomsData[0]?.fields);
         phoneNumber={phoneNumber}
         data={heroData}
       />
-      <RoomsList data={roomsData} />
+       <section id="rooms">
+         <RoomsList data={roomsData} />
+       </section>
       <Gallery data={galleryData} />
       <About
         aboutData={aboutData}

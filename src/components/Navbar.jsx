@@ -2,9 +2,16 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { useEffect, useState } from "react";
 
-function Navbar({ data, isMobile, onLinkClick }) {
+function Navbar({ isMobile, onLinkClick }) {
   const pathname = usePathname();
   const [currentHash, setCurrentHash] = useState("");
+
+  // Define navigation links
+  const navLinks = [
+    { label: "Home", href: "/#hero" },
+    { label: "Rooms", href: "/#rooms" },
+    { label: "About", href: "/#about" }
+  ];
 
   useEffect(() => {
     // Update current hash from URL
@@ -15,112 +22,97 @@ function Navbar({ data, isMobile, onLinkClick }) {
     // Set initial hash
     updateHash();
 
-    // Scroll spy - update URL based on scroll position
-    const handleScroll = () => {
-      const sections = [
-        { id: "#hero", element: document.querySelector("#hero") },
-        { id: "#rooms", element: document.querySelector("#rooms") },
-        { id: "#gallery", element: document.querySelector("#gallery") },
-        { id: "#about", element: document.querySelector("#about") },
-        { id: "#faq", element: document.querySelector("#faq") }
-      ].filter(section => section.element);
+    // Only run scroll spy on home page
+    if (pathname === "/") {
+      // Scroll spy - update URL based on scroll position
+      const handleScroll = () => {
+        const sections = [
+          { id: "#hero", element: document.querySelector("#hero") },
+          { id: "#rooms", element: document.querySelector("#rooms") },
+          { id: "#about", element: document.querySelector("#about") },
+          { id: "#faq", element: document.querySelector("#faq") }
+        ].filter(section => section.element);
 
-      const scrollPosition = window.scrollY + 100;
-      let newHash = "";
+        const scrollPosition = window.scrollY + 100;
+        let newHash = "#hero"; // Default to hero
 
-      // Find current section
-      for (let i = sections.length - 1; i >= 0; i--) {
-        const section = sections[i];
-        const rect = section.element.getBoundingClientRect();
-        const elementTop = rect.top + window.scrollY;
-        
-        if (scrollPosition >= elementTop) {
-          // Map sections to navbar URLs
-          if (section.id === "#hero") {
-            newHash = "#hero";
-          } else if (section.id === "#rooms") {
-            newHash = "#rooms";
-          } else if (section.id === "#gallery" || section.id === "#about" || section.id === "#faq") {
-            newHash = "#about";
+        // Find current section
+        for (let i = sections.length - 1; i >= 0; i--) {
+          const section = sections[i];
+          const rect = section.element.getBoundingClientRect();
+          const elementTop = rect.top + window.scrollY;
+          
+          if (scrollPosition >= elementTop) {
+            newHash = section.id;
+            break;
           }
-          break;
         }
-      }
 
-      // If at top of page, show hero
-      if (window.scrollY < 100) {
-        newHash = "#hero";
-      }
+        // Update URL if different
+        if (newHash !== window.location.hash) {
+          window.history.replaceState(null, null, newHash);
+          setCurrentHash(newHash);
+        }
+      };
 
-      // Update URL if different
-      if (newHash && newHash !== window.location.hash) {
-        window.history.replaceState(null, null, newHash);
-        setCurrentHash(newHash);
-      }
-    };
-
-    // Handle hash changes from URL
-    const handleHashChange = () => {
-      const hash = window.location.hash;
-      setCurrentHash(hash);
-      
-      if (hash) {
+      // Handle hash changes from URL
+      const handleHashChange = () => {
+        const hash = window.location.hash || "#hero";
+        setCurrentHash(hash);
+        
         const element = document.querySelector(hash);
         if (element) {
           element.scrollIntoView({ behavior: 'smooth' });
         }
+      };
+
+      window.addEventListener("scroll", handleScroll, { passive: true });
+      window.addEventListener("hashchange", handleHashChange);
+
+      return () => {
+        window.removeEventListener("scroll", handleScroll);
+        window.removeEventListener("hashchange", handleHashChange);
+      };
+    }
+  }, [pathname]);
+
+  // Function to check if a link is active
+  const isActiveLink = (href) => {
+    if (pathname === "/") {
+      // On home page - check hash
+      if (href === "/#hero") {
+        return !currentHash || currentHash === "#hero";
+      } else if (href === "/#rooms") {
+        return currentHash === "#rooms";
+      } else if (href === "/#about") {
+        return currentHash === "#about";
       }
-    };
-
-    window.addEventListener("scroll", handleScroll, { passive: true });
-    window.addEventListener("hashchange", handleHashChange);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      window.removeEventListener("hashchange", handleHashChange);
-    };
-  }, []);
-
-  if (!data || !Array.isArray(data)) return <nav>Loading...</nav>;
-
-  // Filter out invalid navigation items
-  const validNavItems = data.filter(item => 
-    item && 
-    item.fields && 
-    item.fields.url && 
-    item.fields.label &&
-    item.sys &&
-    item.sys.id
-  );
+    } else if (pathname.startsWith("/rooms")) {
+      // On any room page (including /rooms/[slug]) - Rooms link is active
+      return href === "/#rooms";
+    }
+    return false;
+  };
 
   return (
-    <nav>
-      <ul className={`flex ${isMobile ? "flex-col" : "gap-4"}`}>
-        {validNavItems.map((item) => {
-          
-          let href = item.fields.url;
-          const label = item.fields.label;
-          
-          // Convert page URLs to hash links for single-page navigation
-          if (href === "/rooms") href = "#rooms";
-          if (href === "/" && label.toLowerCase().includes("home")) href = "#hero";
-          
-          // Check if this nav item should be active
-          let isActive = false;
-          
-          if (href.startsWith("#")) {
-            // Hash links - compare with current hash from URL
-            isActive = currentHash === href;
-          } else {
-            // Regular links - compare with current pathname
-            isActive = pathname === href;
-          }
+    <nav className="w-full">
+      <ul className={`flex ${isMobile ? "flex-col space-y-2" : "space-x-6"}`}>
+        {navLinks.map((link) => {
+          const isActive = isActiveLink(link.href);
 
           return (
-            <li key={item.sys.id}>
+            <li key={link.href}>
               <Link
-                href={href}
-                onClick={() => onLinkClick?.()}
+                href={link.href}
+                onClick={(e) => {
+                  // If we're not on home page and clicking a hash link, force navigation
+                  if (pathname !== "/" && link.href.startsWith("/#")) {
+                    e.preventDefault();
+                    window.location.replace(link.href);
+                    return;
+                  }
+                  onLinkClick?.();
+                }}
                 className={`
                           flex justify-end py-3 px-2 text-sm
                           ${
@@ -130,7 +122,7 @@ function Navbar({ data, isMobile, onLinkClick }) {
                           }
                         `}
               >
-                {item.fields.label}
+                {link.label}
               </Link>
             </li>
           );
