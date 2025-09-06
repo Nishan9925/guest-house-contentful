@@ -21,21 +21,21 @@ function About({ aboutData }) {
         <h2 className="md:text-4xl text:2xl text-black font-bold text-white">
           {title}
         </h2>
-        <div className="max-w-[1100px-2] mx-auto flex md:flex-row flex-col items-start md:gap-0 gap-10">
-          <div className="md:w-1/2 w-full flex flex-col justify-center md:items-start items:center gap-3 px-2">
+        <div className="max-w-[1100px] mx-auto flex md:flex-row flex-col items-start justify-between md:gap-10 gap-10">
+          <div className="md:w-full w-full flex flex-col justify-center md:items-start items:center gap-3 px-2">
             <h3 className="md:text-xl text-lg text-white">{aboutUsTitle}</h3>
             <div className="text-base text-white text-start">
               {documentToReactComponents(aboutUsDescription)}
             </div>
           </div>
-          <div className="md:w-1/2 w-full h-96 flex flex-col justify-start md:items-center items-start gap-4 px-2">
-            <div className="md:w-1/2 flex flex-col justify-center items-start gap-3">
+          <div className="md:w-1/3 w-full h-96 flex flex-col justify-start md:items-center items-start gap-4 px-2">
+            <div className="md:w-full flex flex-col justify-center items-start gap-3">
               <h3 className="md:text-xl text-lg text-white">{infoTitle}</h3>
               <EnvelopeIcon email={email} />
               <PhoneIcon phoneNumber={phoneNumber} />
               <MarkerIcon addressTitle={addressTitle} lng={lng} lat={lat} />
             </div>
-            <div className="md:w-1/2 flex flex-col justify-center items-start gap-3">
+            <div className="md:w-full flex flex-col justify-center items-start gap-3">
               <h3 className="md:text-xl text-lg text-white">{aboutUsFasilities}</h3>
               <div className='flex flex-row items-center gap-3'>
                 <AirportShuttleIcon text={"Airport shuttle"} />
