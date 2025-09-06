@@ -1,6 +1,7 @@
 import RoomsRepository from '@/app/lib/Rooms';
 import { notFound } from 'next/navigation';
 import Image from 'next/image';
+import RoomGallery from '@/components/rooms/Gallery';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 export const dynamicParams = true;
@@ -41,7 +42,7 @@ export default async function RoomPage({ params }) {
             <section className="w-full max-w-[1200px] mx-auto md:py-20 py-10 px-4">
                 <div className="mb-8">
                     <h1 className="text-2xl md:text-4xl font-bold mb-4 text-white">{title}</h1>
-                    <div className="flex flex-wrap gap-4 mb-6">
+                    {/* <div className="flex flex-wrap gap-4 mb-6">
                         {bedType && (
                             <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
                                 {bedType}
@@ -69,30 +70,14 @@ export default async function RoomPage({ params }) {
                         }`}>
                             {smokingAllowed ? "Smoking Allowed" : "Non-Smoking"}
                         </span>
-                    </div>
+                    </div> */}
                 </div>
 
-                {/* Masonry Gallery */}
+                {/* Gallery */}
                 {galleryImages.length > 0 && (
                     <div className="mb-8">
                         <h2 className="text-xl font-semibold mb-4 text-white">Room Gallery</h2>
-                        <div className="max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-300 rounded-lg border border-gray-700">
-                            <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 p-4">
-                                {galleryImages.map((image, index) => (
-                                    <div key={image.id} className="break-inside-avoid mb-4">
-                                        <Image
-                                            className="w-full h-auto rounded-lg hover:scale-105 transition-transform duration-300"
-                                            src={image.url}
-                                            alt={image.alt}
-                                            width={400}
-                                            height={300}
-                                            priority={index < 3} // Priority for first 3 images
-                                            style={{ height: 'auto' }}
-                                        />
-                                    </div>
-                                ))}
-                            </div>
-                        </div>
+                        <RoomGallery images={galleryImages} />
                     </div>
                 )}
 
