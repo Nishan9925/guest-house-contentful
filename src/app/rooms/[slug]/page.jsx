@@ -76,23 +76,22 @@ export default async function RoomPage({ params }) {
                 {galleryImages.length > 0 && (
                     <div className="mb-8">
                         <h2 className="text-xl font-semibold mb-4 text-white">Room Gallery</h2>
-                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                            {[0, 1, 2, 3].map(columnIndex => (
-                                <div key={columnIndex} className="grid gap-4">
-                                    {getColumnImages(columnIndex, 4).map((image) => (
-                                        <div key={image.id}>
-                                            <Image
-                                                className="h-auto max-w-full rounded-lg hover:scale-105 transition-transform duration-300"
-                                                src={image.url}
-                                                alt={image.alt}
-                                                width={400}
-                                                height={300}
-                                                priority={columnIndex < 2} // Priority for first 2 columns
-                                            />
-                                        </div>
-                                    ))}
-                                </div>
-                            ))}
+                        <div className="max-h-[600px] overflow-y-auto scrollbar-thin scrollbar-thumb-gray-600 scrollbar-track-gray-300 rounded-lg border border-gray-700">
+                            <div className="columns-2 md:columns-3 lg:columns-4 gap-4 space-y-4 p-4">
+                                {galleryImages.map((image, index) => (
+                                    <div key={image.id} className="break-inside-avoid mb-4">
+                                        <Image
+                                            className="w-full h-auto rounded-lg hover:scale-105 transition-transform duration-300"
+                                            src={image.url}
+                                            alt={image.alt}
+                                            width={400}
+                                            height={300}
+                                            priority={index < 3} // Priority for first 3 images
+                                            style={{ height: 'auto' }}
+                                        />
+                                    </div>
+                                ))}
+                            </div>
                         </div>
                     </div>
                 )}
