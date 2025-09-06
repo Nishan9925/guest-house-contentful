@@ -18,30 +18,96 @@ export default async function RoomPage({ params }) {
         const fields = room.fields || {};
         const title = fields.name || 'Room';
         const bedType = fields.bedType;
+        const category = fields.category;
+        const sizeSqft = fields.sizeSqft;
+        const floorNumber = fields.floorNumber;
+        const smokingAllowed = fields.smokingAllowed;
         const description = fields.description || fields.roomDescription || fields.longDescription;
         const images = Array.isArray(fields.images) ? fields.images : [];
-        const primaryImage = images[0];
-        const imageUrl = primaryImage?.fields?.file?.url ? `https:${primaryImage.fields.file.url}` : null;
-        const imageAlt = primaryImage?.fields?.title || title;
+
+        // Prepare images for masonry gallery
+        const galleryImages = images.map(img => ({
+            url: `https:${img.fields.file.url}`,
+            alt: img.fields.title || title,
+            id: img.sys.id
+        }));
+
+        // Split images into 4 columns for masonry layout
+        const getColumnImages = (columnIndex, totalColumns) => {
+            return galleryImages.filter((_, index) => index % totalColumns === columnIndex);
+        };
 
         return (
-            <section className="w-full max-w-[1100px] mx-auto md:py-20 py-10 px-4">
-                <h1 className="text-2xl md:text-4xl font-bold mb-2">{title}</h1>
-                {bedType && (
-                    <p className="text-white/80 mb-6">{bedType}</p>
-                )}
-                {imageUrl && (
-                    <div className="relative w-full h-[300px] md:h-[420px] rounded overflow-hidden mb-6">
-                        <Image src={imageUrl} alt={imageAlt} fill className="object-cover" priority />
+            <section className="w-full max-w-[1200px] mx-auto md:py-20 py-10 px-4">
+                <div className="mb-8">
+                    <h1 className="text-2xl md:text-4xl font-bold mb-4 text-white">{title}</h1>
+                    <div className="flex flex-wrap gap-4 mb-6">
+                        {bedType && (
+                            <span className="bg-blue-100 text-blue-800 text-sm font-medium px-3 py-1 rounded-full">
+                                {bedType}
+                            </span>
+                        )}
+                        {category && (
+                            <span className="bg-green-100 text-green-800 text-sm font-medium px-3 py-1 rounded-full">
+                                {category}
+                            </span>
+                        )}
+                        {sizeSqft && (
+                            <span className="bg-purple-100 text-purple-800 text-sm font-medium px-3 py-1 rounded-full">
+                                {sizeSqft} sq ft
+                            </span>
+                        )}
+                        {floorNumber && (
+                            <span className="bg-yellow-100 text-yellow-800 text-sm font-medium px-3 py-1 rounded-full">
+                                Floor {floorNumber}
+                            </span>
+                        )}
+                        <span className={`text-sm font-medium px-3 py-1 rounded-full ${
+                            smokingAllowed 
+                                ? "bg-red-100 text-red-800" 
+                                : "bg-gray-100 text-gray-800"
+                        }`}>
+                            {smokingAllowed ? "Smoking Allowed" : "Non-Smoking"}
+                        </span>
+                    </div>
+                </div>
+
+                {/* Masonry Gallery */}
+                {galleryImages.length > 0 && (
+                    <div className="mb-8">
+                        <h2 className="text-xl font-semibold mb-4 text-white">Room Gallery</h2>
+                        <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                            {[0, 1, 2, 3].map(columnIndex => (
+                                <div key={columnIndex} className="grid gap-4">
+                                    {getColumnImages(columnIndex, 4).map((image) => (
+                                        <div key={image.id}>
+                                            <Image
+                                                className="h-auto max-w-full rounded-lg hover:scale-105 transition-transform duration-300"
+                                                src={image.url}
+                                                alt={image.alt}
+                                                width={400}
+                                                height={300}
+                                                priority={columnIndex < 2} // Priority for first 2 columns
+                                            />
+                                        </div>
+                                    ))}
+                                </div>
+                            ))}
+                        </div>
                     </div>
                 )}
-                <div className="prose prose-invert max-w-none">
-                    {description
-                        ? description.nodeType
-                            ? documentToReactComponents(description)
-                            : description
-                        : null}
-                </div>
+
+                {/* Room Description */}
+                {description && (
+                    <div className="prose prose-invert max-w-none">
+                        <h2 className="text-xl font-semibold mb-4 text-white">Room Description</h2>
+                        <div className="text-gray-300">
+                            {description.nodeType
+                                ? documentToReactComponents(description)
+                                : description}
+                        </div>
+                    </div>
+                )}
             </section>
         );
     } catch (error) {
