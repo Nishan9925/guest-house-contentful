@@ -94,7 +94,7 @@ function Navbar({ isMobile, onLinkClick }) {
       } else if (href === "/#rooms") {
         return currentHash === "#rooms";
       } else if (href === "/#about") {
-        return currentHash === "#about";
+        return currentHash === "#about" || currentHash === "#faq";
       }
     } else if (pathname.startsWith("/rooms/")) {
       // On individual room slug pages (/rooms/[slug]) - no nav items are active
