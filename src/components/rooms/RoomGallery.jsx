@@ -9,7 +9,6 @@ function RoomGallery({ images = [] }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [mobileImageLoaded, setMobileImageLoaded] = useState(false);
   const [modalImageLoaded, setModalImageLoaded] = useState(false);
-  const [slideDirection, setSlideDirection] = useState('next');
 
   const openModal = (index) => {
     setCurrentIndex(index);
@@ -21,12 +20,10 @@ function RoomGallery({ images = [] }) {
   };
 
   const showPrev = () => {
-    setSlideDirection('prev');
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   const showNext = () => {
-    setSlideDirection('next');
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
@@ -93,7 +90,7 @@ function RoomGallery({ images = [] }) {
             src={images[currentIndex].url}
             alt={images[currentIndex].alt || ''}
             fill
-            className={`object-cover transition-all duration-300 ease-out ${mobileImageLoaded ? 'opacity-100 translate-x-0' : `${slideDirection === 'next' ? 'translate-x-6' : '-translate-x-6'} opacity-0`}`}
+            className="object-cover"
             onLoadingComplete={() => setMobileImageLoaded(true)}
             priority
           />
@@ -163,7 +160,7 @@ function RoomGallery({ images = [] }) {
               </button>
 
               <div
-                className="relative w-full h-[80vh]"
+                className="relative w-full h-[80vh] overflow-hidden"
                 onTouchStart={handleTouchStart}
                 onTouchMove={handleTouchMove}
                 onTouchEnd={handleTouchEnd}
@@ -173,7 +170,7 @@ function RoomGallery({ images = [] }) {
                   src={images[currentIndex].url}
                   alt={images[currentIndex].alt || ''}
                   fill
-                  className={`object-contain transition-all duration-300 ease-out ${modalImageLoaded ? 'opacity-100 translate-x-0' : `${slideDirection === 'next' ? 'translate-x-6' : '-translate-x-6'} opacity-0`}`}
+                  className="object-contain"
                   onLoadingComplete={() => setModalImageLoaded(true)}
                   draggable={false}
                   priority
