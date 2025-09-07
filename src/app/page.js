@@ -14,14 +14,18 @@ export default async function Home() {
   const [heroData] = await HeroRepository.getInstance().getModels();
   const galleryData = await GalleryRepository.getInstance().getModels();
   const aboutData = await AboutRepository.getInstance().getModels();
+  // const guestHouseLocationLat = aboutData[0].fields.guestHouseLocation.lat;
+  // const guestHouseLocationLng = aboutData[0].fields.guestHouseLocation.lon;
+  // console.log(guestHouseLocationLat);
+  // console.log(guestHouseLocationLng);
   const email = aboutData[0].fields.email;
   const phoneNumber = aboutData[0].fields.phoneNumber;
   const faqData = await FAQRepository.getInstance().getModels();
   const roomsData = await RoomsRepository.getInstance().getModels();
 
-  console.log("Page roomsData:", roomsData);
-  console.log("First room fields:", roomsData[0]?.fields);
-  
+  // console.log("Page roomsData:", roomsData);
+  // console.log("First room fields:", roomsData[0]?.fields);
+
   return (
     <>
       <Hero

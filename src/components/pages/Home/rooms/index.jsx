@@ -36,5 +36,3 @@ function RoomsList({ data = [] }) {
 }
 
 export default RoomsList;
-
-

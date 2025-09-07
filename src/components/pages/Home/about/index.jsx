@@ -33,7 +33,7 @@ function About({ aboutData }) {
               <h3 className="md:text-xl text-lg text-white">{infoTitle}</h3>
               <EnvelopeIcon email={email} />
               <PhoneIcon phoneNumber={phoneNumber} />
-              <MarkerIcon addressTitle={addressTitle} lng={lng} lat={lat} />
+              <MarkerIcon addressTitle={addressTitle} lng={lng} lat={lat} fill={"white"} textColor={"text-white"} />
             </div>
             <div className="md:w-full flex flex-col justify-center items-start gap-3">
               <h3 className="md:text-xl text-lg text-white">{aboutUsFasilities}</h3>
