@@ -12,7 +12,7 @@ function About({ aboutData }) {
   const phoneNumber = data.fields.phoneNumber;
   const addressTitle = data.fields.addressTitle;
   const lat = data.fields.guestHouseLocation.lat;
-  const lng = data.fields.guestHouseLocation.lng;
+  const lng = data.fields.guestHouseLocation.lon;
   const aboutUsFasilities = data.fields.aboutUsFasilities;
 
   return (

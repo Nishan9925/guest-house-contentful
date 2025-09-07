@@ -70,7 +70,42 @@ function RoomGallery({ images = [] }) {
 
   return (
     <>
-      <div className="columns-2 md:columns-3 lg:columns-4">
+      {/* Mobile carousel below md */}
+      {images.length > 0 && (
+        <div
+          className="relative md:hidden w-full h-64 rounded-lg overflow-hidden mb-4"
+          onTouchStart={handleTouchStart}
+          onTouchMove={handleTouchMove}
+          onTouchEnd={handleTouchEnd}
+        >
+          <Image
+            src={images[currentIndex].url}
+            alt={images[currentIndex].alt || ''}
+            fill
+            className="object-cover"
+            priority
+          />
+          <button
+            type="button"
+            onClick={showPrev}
+            className="absolute left-2 top-1/2 -translate-y-1/2 z-10 text-white bg-black/50 rounded-full p-2"
+          >
+            <PrevArrowIcon />
+          </button>
+          <button
+            type="button"
+            onClick={showNext}
+            className="absolute right-2 top-1/2 -translate-y-1/2 z-10 text-white bg-black/50 rounded-full p-2"
+          >
+            <NextArrowIcon />
+          </button>
+          <div className="absolute bottom-2 right-2 z-10 bg-black/60 text-white text-sm px-2 py-1 rounded">
+            {currentIndex + 1}/{images.length}
+          </div>
+        </div>
+      )}
+
+      <div className="hidden md:block md:columns-3 lg:columns-4">
         {images.map((image, index) => (
           <button
             key={image.id || index}

@@ -41,9 +41,8 @@ export default async function RoomPage({ params }) {
         };
 
         const aboutData = await AboutRepository.getInstance().getModels();
-        const guestHouseLocationLng = aboutData?.[0]?.fields?.guestHouseLocation?.lon;
-        const guestHouseLocationLat = aboutData?.[0]?.fields?.guestHouseLocation?.lat;
-        // console.log('Room page lat/lng:', guestHouseLocationLat, guestHouseLocationLng);
+        const lng = aboutData?.[0]?.fields?.guestHouseLocation?.lon;
+        const lat = aboutData?.[0]?.fields?.guestHouseLocation?.lat;
 
         return (
             <section className="w-full max-w-[1200px] mx-auto md:py-20 py-10 px-4">
@@ -51,8 +50,8 @@ export default async function RoomPage({ params }) {
                     <h1 className="text-2xl font-semibold mb-4 text-black">{title}</h1>
                     <MarkerIcon
                         addressTitle={"Building 4, 3rd street, 1st side street., 3612 Chʼiva, Armenia"}
-                        lng={guestHouseLocationLng}
-                        lot={guestHouseLocationLat}
+                        lng={lng}
+                        lat={lat}
                         fill={"black"}
                         textColor={"text-black"}
                     />
@@ -69,8 +68,8 @@ export default async function RoomPage({ params }) {
                     {/* Room Description */}
                     {description && (
                         <div className="prose prose-invert max-w-none">
-                            <h2 className="text-xl font-semibold mb-4 text-white">Room Description</h2>
-                            <div className="text-gray-300">
+                            <h2 className="text-xl font-semibold mb-4 text-black">Room Description</h2>
+                            <div className="text-black">
                                 {description.nodeType
                                     ? documentToReactComponents(description)
                                     : description}
