@@ -84,7 +84,7 @@ function Header({ data }) {
             <svg
               className="w-6 h-6 color-accent-first"
               fill="none"
-              stroke="currentColor"
+              stroke="white"
               viewBox="0 0 24 24"
               xmlns="http://www.w3.org/2000/svg"
             >
