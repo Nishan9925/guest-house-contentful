@@ -69,7 +69,7 @@ export default async function RoomPage({ params }) {
             <div className='flex flex-col gap-2'>
                 {description && (
                     <div className="prose prose-invert max-w-none">
-                        <h2 className="text-xl font-semibold mb-4 text-black">Room Description</h2>
+                        <h2 className="text-xl font-semibold mb-4 text-accent-first">Room Description</h2>
                         <div className="text-black">
                             {description.nodeType
                                 ? documentToReactComponents(description)
@@ -77,27 +77,32 @@ export default async function RoomPage({ params }) {
                         </div>
                     </div>
                 )}
-                <div className='flex flex-col gap-2'>
-                    <h3 className='text-xl text-black font-semibold'>Reserve your room now</h3>
-                    {(email || phoneNumber) && (
-                        <div className="inline-flex flex-wrap gap-4">
-                            {email && (
-                                <EnvelopeIcon email={email} iconColor={"black"} textColor={"text-black"} />
-                            )}
-                            {phoneNumber && (
-                                <PhoneIcon phoneNumber={phoneNumber} iconColor={"black"} textColor={"text-black"} />
-
-                            )}
-                        </div>
-                    )}
-                </div>
                 <p className='text-black font-semibold'>Bed Type: {bedType}</p>
                 <p className='text-black font-semibold'>Size: {sizeSqft}m²</p>
                 <p className='text-black font-semibold'>Floor Number: {floorNumber}</p>
                 <p className='text-black font-semibold'>Smoking: {smokingAllowed ? 'Allowed' : 'Not Allowed'}</p>
             </div>
+            <div className='flex flex-col gap-2 mt-4 mb-4 items-start justify-start bg-accent-second p-10 gap-6'>
+                <div className='flex flex-col gap-2'>
+                    <h3 className='text-2xl text-white font-semibold'>Do you want to rent a room?</h3>
+                    <p className='text-base text-white'>We are ready to help you with your stay. Please contact us.</p>
+                </div>
+                <div className='max-w-[1100px]  flex flex-col justify-center items-center'>
+                {(email || phoneNumber) && (
+                    <div className="inline-flex flex-wrap gap-4">
+                        {email && (
+                            <EnvelopeIcon email={email} iconColor={"white"} textColor={"text-white"} />
+                        )}
+                        {phoneNumber && (
+                            <PhoneIcon phoneNumber={phoneNumber} iconColor={"white"} textColor={"text-white"} />
+
+                        )}
+                    </div>
+                )}
+                </div>
+            </div>
             <div className='flex flex-col gap-2'>
-                <h3 className='text-xl font-semibold text-black'>Amenities</h3>
+                <h3 className='text-xl font-semibold text-accent-first'>Our Benefits and Amenities</h3>
                 {amenities && (
                     <div className='flex md:flex-row flex-col gap-8'>
                         {(() => {
