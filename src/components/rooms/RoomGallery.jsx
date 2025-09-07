@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
+import { CloseIcon, NextArrowIcon, PrevArrowIcon } from '../Icons';
 
 function RoomGallery({ images = [] }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -101,9 +102,7 @@ function RoomGallery({ images = [] }) {
             onClick={(e) => { e.stopPropagation(); closeModal(); }}
             className="absolute top-4 right-4 z-20 text-white bg-black/50 rounded-full p-2 hover:bg-black/70 cursor-pointer"
           >
-            <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-              <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
-            </svg>
+            <CloseIcon />
           </button>
 
           <div className="h-screen w-screen flex flex-col" onClick={(e) => e.stopPropagation()}>
@@ -113,9 +112,7 @@ function RoomGallery({ images = [] }) {
                 onClick={showPrev}
                 className="absolute left-4 top-1/2 -translate-y-1/2 z-20 text-white bg-black/50 rounded-full p-3 hover:bg-black/70"
               >
-                <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
-                </svg>
+                <PrevArrowIcon />
               </button>
 
               <div
@@ -139,9 +136,7 @@ function RoomGallery({ images = [] }) {
                 onClick={showNext}
                 className="absolute right-4 top-1/2 -translate-y-1/2 z-20 text-white bg-black/50 rounded-full p-3 hover:bg-black/70"
               >
-                <svg className="w-10 h-10" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
-                </svg>
+                <NextArrowIcon />
               </button>
             </div>
 
