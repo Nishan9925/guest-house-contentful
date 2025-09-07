@@ -18,8 +18,10 @@ export default async function Home() {
   const phoneNumber = aboutData[0].fields.phoneNumber;
   const faqData = await FAQRepository.getInstance().getModels();
   const roomsData = await RoomsRepository.getInstance().getModels();
-console.log("Page roomsData:", roomsData);
-console.log("First room fields:", roomsData[0]?.fields);
+
+  console.log("Page roomsData:", roomsData);
+  console.log("First room fields:", roomsData[0]?.fields);
+  
   return (
     <>
       <Hero

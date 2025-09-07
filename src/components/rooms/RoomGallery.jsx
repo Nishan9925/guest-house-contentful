@@ -145,14 +145,14 @@ function RoomGallery({ images = [] }) {
               </button>
             </div>
 
-            <div className="w-full overflow-x-auto px-4 pb-4">
-              <div className="flex gap-2">
+            <div className="w-full overflow-x-auto overflow-y-hidden px-4 pb-4">
+              <div className="inline-flex min-w-max gap-2">
                 {images.map((img, idx) => (
                   <button
                     key={img.id || idx}
                     type="button"
                     onClick={() => setCurrentIndex(idx)}
-                    className={`relative h-16 w-24 rounded  border-2 ${idx === currentIndex ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'
+                    className={`relative h-16 w-24 shrink-0 rounded  border-2 ${idx === currentIndex ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'
                       }`}
                   >
                     <Image src={img.url} alt={img.alt || ''} fill className="object-cover" />
