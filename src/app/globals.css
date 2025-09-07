@@ -15,8 +15,13 @@
 
 @layer utilities {
   @keyframes infinite-slider {
-    0% { transform: translateX(0); }
-    100% { transform: translateX(-50%); }
+    0% {
+      transform: translateX(0);
+    }
+
+    100% {
+      transform: translateX(-50%);
+    }
   }
 
   .animate-infinite-slider {
@@ -34,7 +39,9 @@
 html {
   line-height: 1.15;
   -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
 }
+
 
 body {
   margin: 0;

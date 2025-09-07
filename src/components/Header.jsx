@@ -108,17 +108,20 @@ function Header({ data }) {
         </div>
       </div>
 
-      {/* Mobile Menu */}
-      {menuOpen && (
-        <div
-          className="sm:hidden px-4 pb-4 z-100 absolute w-full top-23 bg-accent-first shadow-[inset_0_0_10px_rgba(0,0,0,1)]">
-          <Navbar
-            data={navigationLinks}
-            isMobile={true}
-            onLinkClick={() => setMenuOpen(false)}
-          />
-        </div>
-      )}
+      {/* Mobile Menu with smooth open/close */}
+      <div
+        className={`sm:hidden px-4 pb-4 z-100 absolute w-full top-23 bg-accent-first shadow-[inset_0_0_10px_rgba(0,0,0,1)] transition-all duration-300 ease-in-out transform-gpu ${
+          menuOpen
+            ? "opacity-100 max-h-[480px] translate-y-0 pointer-events-auto"
+            : "opacity-0 max-h-0 -translate-y-2 overflow-hidden pointer-events-none"
+        }`}
+      >
+        <Navbar
+          data={navigationLinks}
+          isMobile={true}
+          onLinkClick={() => setMenuOpen(false)}
+        />
+      </div>
     </header>
   );
 }
