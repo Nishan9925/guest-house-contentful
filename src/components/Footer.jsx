@@ -54,9 +54,10 @@ function Footer({ data }) {
                 let href = item.fields.url;
                 const label = item.fields.label;
                 
-                // Convert page URLs to hash links for single-page navigation
-                if (href === "/rooms") href = "#rooms";
-                if (href === "/" && label.toLowerCase().includes("home")) href = "#hero";
+                // Convert to absolute home hash links for single-page navigation
+                if (href === "/rooms" || label.toLowerCase().includes("rooms")) href = "/#rooms";
+                if (href === "/about" || label.toLowerCase().includes("about")) href = "/#about";
+                if (href === "/" && label.toLowerCase().includes("home")) href = "/#hero";
 
                 return (
                   <li key={item.sys.id}>
