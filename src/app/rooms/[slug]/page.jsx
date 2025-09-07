@@ -78,7 +78,7 @@ export default async function RoomPage({ params }) {
                     </div>
                 )}
                 <div className='flex flex-col gap-2'>
-                    <h3 className='text-black font-semibold'>Reserve your room now</h3>
+                    <h3 className='text-xl text-black font-semibold'>Reserve your room now</h3>
                     {(email || phoneNumber) && (
                         <div className="inline-flex flex-wrap gap-4">
                             {email && (
@@ -96,38 +96,40 @@ export default async function RoomPage({ params }) {
                 <p className='text-black font-semibold'>Floor Number: {floorNumber}</p>
                 <p className='text-black font-semibold'>Smoking: {smokingAllowed ? 'Allowed' : 'Not Allowed'}</p>
             </div>
-            {/* Amenities */}
-            {amenities && (
-                <div className='flex md:flex-row flex-col gap-8 mt-8'>
-                    {(() => {
-                        const entries = Array.isArray(amenities) ? amenities : [amenities];
-                        const getText = (node) => {
-                            if (!node) return '';
-                            if (node.nodeType === 'text') return node.value || '';
-                            if (Array.isArray(node.content)) return node.content.map(getText).join('');
-                            return '';
-                        };
-                        return entries.map((amenity, idx) => {
-                            const title = amenity?.fields?.amenitiesTitle || 'Amenities';
-                            const rich = amenity?.fields?.amenitiesList;
-                            const ulNode = rich?.content?.find((n) => n.nodeType === 'unordered-list');
-                            const items = (ulNode?.content || [])
-                                .map((li) => getText(li).trim())
-                                .filter(Boolean);
-                            return (
-                                <div key={idx} className="min-w-[220px]">
-                                    <h3 className='text-xl font-semibold mb-3 text-black'>{title}</h3>
-                                    <ul className='list-disc pl-5 text-black'>
-                                        {items.map((text, i) => (
-                                            <li key={i}> {text}</li>
-                                        ))}
-                                    </ul>
-                                </div>
-                            );
-                        });
-                    })()}
-                </div>
-            )}
+            <div className='flex flex-col gap-2'>
+                <h3 className='text-xl font-semibold text-black'>Amenities</h3>
+                {amenities && (
+                    <div className='flex md:flex-row flex-col gap-8'>
+                        {(() => {
+                            const entries = Array.isArray(amenities) ? amenities : [amenities];
+                            const getText = (node) => {
+                                if (!node) return '';
+                                if (node.nodeType === 'text') return node.value || '';
+                                if (Array.isArray(node.content)) return node.content.map(getText).join('');
+                                return '';
+                            };
+                            return entries.map((amenity, idx) => {
+                                const title = amenity?.fields?.amenitiesTitle || 'Amenities';
+                                const rich = amenity?.fields?.amenitiesList;
+                                const ulNode = rich?.content?.find((n) => n.nodeType === 'unordered-list');
+                                const items = (ulNode?.content || [])
+                                    .map((li) => getText(li).trim())
+                                    .filter(Boolean);
+                                return (
+                                    <div key={idx} className="min-w-[220px]">
+                                        <h3 className='text-base font-semibold mb-3 text-black'>{title}</h3>
+                                        <ul className='list-disc pl-5 text-black'>
+                                            {items.map((text, i) => (
+                                                <li key={i}> {text}</li>
+                                            ))}
+                                        </ul>
+                                    </div>
+                                );
+                            });
+                        })()}
+                    </div>
+                )}
+            </div>
         </section>
     );
     // } catch (error) {
