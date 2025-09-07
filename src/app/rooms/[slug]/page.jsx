@@ -48,9 +48,9 @@ export default async function RoomPage({ params }) {
     const phoneNumber = aboutData?.[0]?.fields?.phoneNumber;
 
     return (
-        <section className="w-full max-w-[1200px] mx-auto md:py-20 py-10 px-4">
+        <section className="w-full max-w-[1200px] mx-auto md:py-10 py-8 px-4 flex flex-col gap-3">
             <div className="flex flex-col gap-4 mb-4">
-                <h1 className="text-2xl font-semibold  text-black">{title}</h1>
+                <h1 className="text-2xl font-semibold text-black">{title}</h1>
                 <MarkerIcon
                     addressTitle={"Building 4, 3rd street, 1st side street., 3612 Chʼiva, Armenia"}
                     lng={lng}
@@ -79,17 +79,17 @@ export default async function RoomPage({ params }) {
                 )}
                 <div className='flex flex-col gap-2'>
                     <h3 className='text-black font-semibold'>Reserve your room now</h3>
-                {(email || phoneNumber) && (
-                    <div className="mt-3 inline-flex flex-wrap gap-4">
-                        {email && (
-                             <EnvelopeIcon email={email} iconColor={"black"} textColor={"text-black"} />
-                        )}
-                        {phoneNumber && (
+                    {(email || phoneNumber) && (
+                        <div className="inline-flex flex-wrap gap-4">
+                            {email && (
+                                <EnvelopeIcon email={email} iconColor={"black"} textColor={"text-black"} />
+                            )}
+                            {phoneNumber && (
                                 <PhoneIcon phoneNumber={phoneNumber} iconColor={"black"} textColor={"text-black"} />
-                          
-                        )}
-                    </div>
-                )}
+
+                            )}
+                        </div>
+                    )}
                 </div>
                 <p className='text-black font-semibold'>Bed Type: {bedType}</p>
                 <p className='text-black font-semibold'>Size: {sizeSqft}m²</p>
