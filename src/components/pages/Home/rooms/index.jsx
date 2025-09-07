@@ -9,7 +9,7 @@ function RoomsList({ data = [] }) {
       {data.map((room) => {
         const { sys, fields } = room;
         if (!fields?.slug) return null;
-
+        
         const title = fields.name;
         const img = fields.images[0].fields.file.url;
         const url = `https:${img}`;
