@@ -25,7 +25,7 @@ function Header({ data }) {
       document.body.style.overflow = 'unset';
     };
   }, [menuOpen]);
-  
+
   const logo = data?.[0]?.fields?.logo?.fields;
   const imageUrl = logo?.file?.url ? `https:${logo.file.url}` : null;
   const title = data?.[0]?.fields?.logoAltText || "Logo";
@@ -111,12 +111,7 @@ function Header({ data }) {
       {/* Mobile Menu */}
       {menuOpen && (
         <div
-          className="sm:hidden px-4 pb-4 z-100 absolute w-full top-23 bg-accent-first shadow-[inset_0_0_10px_rgba(0,0,0,1)]"
-          style={{
-            // backgroundColor: "var(--accent-first)",
-            // boxShadow: "inset rgba(0,0,0,1)",
-          }}
-        >
+          className="sm:hidden px-4 pb-4 z-100 absolute w-full top-23 bg-accent-first shadow-[inset_0_0_10px_rgba(0,0,0,1)]">
           <Navbar
             data={navigationLinks}
             isMobile={true}
