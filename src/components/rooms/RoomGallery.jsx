@@ -7,6 +7,9 @@ import { CloseIcon, NextArrowIcon, PrevArrowIcon } from '../Icons';
 function RoomGallery({ images = [] }) {
   const [isOpen, setIsOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [mobileImageLoaded, setMobileImageLoaded] = useState(false);
+  const [modalImageLoaded, setModalImageLoaded] = useState(false);
+  const [slideDirection, setSlideDirection] = useState('next');
 
   const openModal = (index) => {
     setCurrentIndex(index);
@@ -18,10 +21,12 @@ function RoomGallery({ images = [] }) {
   };
 
   const showPrev = () => {
+    setSlideDirection('prev');
     setCurrentIndex((prev) => (prev - 1 + images.length) % images.length);
   };
 
   const showNext = () => {
+    setSlideDirection('next');
     setCurrentIndex((prev) => (prev + 1) % images.length);
   };
 
@@ -54,6 +59,11 @@ function RoomGallery({ images = [] }) {
   };
 
   useEffect(() => {
+    setMobileImageLoaded(false);
+    setModalImageLoaded(false);
+  }, [currentIndex]);
+
+  useEffect(() => {
     if (!isOpen) return;
     const onKey = (e) => {
       if (e.key === 'Escape') closeModal();
@@ -79,10 +89,12 @@ function RoomGallery({ images = [] }) {
           onTouchEnd={handleTouchEnd}
         >
           <Image
+            key={`mobile-${images[currentIndex].url}`}
             src={images[currentIndex].url}
             alt={images[currentIndex].alt || ''}
             fill
-            className="object-cover"
+            className={`object-cover transition-all duration-300 ease-out ${mobileImageLoaded ? 'opacity-100 translate-x-0' : `${slideDirection === 'next' ? 'translate-x-6' : '-translate-x-6'} opacity-0`}`}
+            onLoadingComplete={() => setMobileImageLoaded(true)}
             priority
           />
           <button
@@ -157,10 +169,12 @@ function RoomGallery({ images = [] }) {
                 onTouchEnd={handleTouchEnd}
               >
                 <Image
+                  key={`modal-${images[currentIndex].url}`}
                   src={images[currentIndex].url}
                   alt={images[currentIndex].alt || ''}
                   fill
-                  className="object-contain"
+                  className={`object-contain transition-all duration-300 ease-out ${modalImageLoaded ? 'opacity-100 translate-x-0' : `${slideDirection === 'next' ? 'translate-x-6' : '-translate-x-6'} opacity-0`}`}
+                  onLoadingComplete={() => setModalImageLoaded(true)}
                   draggable={false}
                   priority
                 />

@@ -46,8 +46,8 @@ export default async function RoomPage({ params }) {
 
         return (
             <section className="w-full max-w-[1200px] mx-auto md:py-20 py-10 px-4">
-                <div className='flex flex-col'>
-                    <h1 className="text-2xl font-semibold mb-4 text-black">{title}</h1>
+                <div className="flex flex-col gap-4 mb-4">
+                    <h1 className="text-2xl font-semibold  text-black">{title}</h1>
                     <MarkerIcon
                         addressTitle={"Building 4, 3rd street, 1st side street., 3612 Chʼiva, Armenia"}
                         lng={lng}
@@ -57,7 +57,6 @@ export default async function RoomPage({ params }) {
                     />
                 </div>
                 <div>
-                    {/* Gallery */}
                     {galleryImages.length > 0 && (
                         <div className="">
                             <RoomGallery images={galleryImages} />
@@ -65,7 +64,6 @@ export default async function RoomPage({ params }) {
                     )}
                 </div>
                 <div>
-                    {/* Room Description */}
                     {description && (
                         <div className="prose prose-invert max-w-none">
                             <h2 className="text-xl font-semibold mb-4 text-black">Room Description</h2>
