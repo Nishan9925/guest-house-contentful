@@ -9,14 +9,14 @@ function RoomsList({ data = [] }) {
       {data.map((room) => {
         const { sys, fields } = room;
         if (!fields?.slug) return null;
-        
+
         const title = fields.name;
         const img = fields.images[0].fields.file.url;
         const url = `https:${img}`;
         const alt = img?.fields?.title || title;
         const bedType = fields.bedType;
         return (
-           <Link key={sys?.id} href={`/rooms/${fields.slug}`} className="max-w-[260px] flex flex-col gap-6">
+           <Link key={sys?.id} target='_blank' href={`/rooms/${fields.slug}`} className="max-w-[260px] flex flex-col gap-6">
             <div className="relative w-[260px] h-[260px]">
               {url ? (
                 <Image src={url} alt={alt} fill className="object-cover rounded" priority />

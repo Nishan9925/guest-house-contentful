@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import Image from 'next/image';
 import RoomGallery from '@/components/rooms/RoomGallery';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
-import { AmenityMarkIcon, MarkerIcon } from '@/components/Icons';
+import { MarkerIcon, EnvelopeIcon, PhoneIcon } from '@/components/Icons';
 
 export const dynamicParams = true;
 
@@ -44,6 +44,8 @@ export default async function RoomPage({ params }) {
     const aboutData = await AboutRepository.getInstance().getModels();
     const lng = aboutData?.[0]?.fields?.guestHouseLocation?.lon;
     const lat = aboutData?.[0]?.fields?.guestHouseLocation?.lat;
+    const email = aboutData?.[0]?.fields?.email;
+    const phoneNumber = aboutData?.[0]?.fields?.phoneNumber;
 
     return (
         <section className="w-full max-w-[1200px] mx-auto md:py-20 py-10 px-4">
@@ -75,8 +77,22 @@ export default async function RoomPage({ params }) {
                         </div>
                     </div>
                 )}
+                <div className='flex flex-col gap-2'>
+                    <h3 className='text-black font-semibold'>Reserve your room now</h3>
+                {(email || phoneNumber) && (
+                    <div className="mt-3 inline-flex flex-wrap gap-4">
+                        {email && (
+                             <EnvelopeIcon email={email} iconColor={"black"} textColor={"text-black"} />
+                        )}
+                        {phoneNumber && (
+                                <PhoneIcon phoneNumber={phoneNumber} iconColor={"black"} textColor={"text-black"} />
+                          
+                        )}
+                    </div>
+                )}
+                </div>
                 <p className='text-black font-semibold'>Bed Type: {bedType}</p>
-                <p className='text-black font-semibold'>Size: {sizeSqft}</p>
+                <p className='text-black font-semibold'>Size: {sizeSqft}m²</p>
                 <p className='text-black font-semibold'>Floor Number: {floorNumber}</p>
                 <p className='text-black font-semibold'>Smoking: {smokingAllowed ? 'Allowed' : 'Not Allowed'}</p>
             </div>

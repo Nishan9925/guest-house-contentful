@@ -31,8 +31,8 @@ function About({ aboutData }) {
           <div className="md:w-1/3 w-full h-96 flex flex-col justify-start md:items-center items-start gap-4 px-2">
             <div className="md:w-full flex flex-col justify-center items-start gap-3">
               <h3 className="md:text-xl text-lg text-white">{infoTitle}</h3>
-              <EnvelopeIcon email={email} />
-              <PhoneIcon phoneNumber={phoneNumber} />
+              <EnvelopeIcon email={email} iconColor={"white"} textColor={"text-white"} />
+              <PhoneIcon phoneNumber={phoneNumber} iconColor={"white"} textColor={"text-white"} />
               <MarkerIcon addressTitle={addressTitle} lng={lng} lat={lat} fill={"white"} textColor={"text-white"} />
             </div>
             <div className="md:w-full flex flex-col justify-center items-start gap-3">
