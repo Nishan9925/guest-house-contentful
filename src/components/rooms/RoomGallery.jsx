@@ -3,6 +3,7 @@
 import { useEffect, useRef, useState } from 'react';
 import Image from 'next/image';
 import { CloseIcon, NextArrowIcon, PrevArrowIcon } from '../Icons';
+import Masonry from 'react-masonry-css';
 
 function RoomGallery({ images = [] }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -114,23 +115,29 @@ function RoomGallery({ images = [] }) {
         </div>
       )}
 
-      <div className="hidden md:block md:columns-3 lg:columns-4">
-        {images.map((image, index) => (
-          <button
-            key={image.id || index}
-            type="button"
-            onClick={() => openModal(index)}
-            className="break-inside-avoid block w-full text-left"
-          >
-            <Image
-              className="w-full h-auto rounded-lg hover:scale-[1.02] transition-transform duration-300 m-2"
-              src={image.url}
-              alt={image.alt || ''}
-              width={400}
-              height={300}
-            />
-          </button>
-        ))}
+      <div className="hidden md:block md:max-h-[70vh] md:max-w-[1100px] md:overflow-y-auto md:overflow-x-hidden md:mx-auto md:snap-y md:snap-mandatory">
+        <Masonry
+          breakpointCols={{ default: 4, 1024: 4, 768: 3 }}
+          className="flex -ml-2"
+          columnClassName="pl-2 space-y-2"
+        >
+          {images.map((image, index) => (
+            <button
+              key={image.id || index}
+              type="button"
+              onClick={() => openModal(index)}
+              className="block w-full text-left snap-start"
+            >
+              <Image
+                className="w-full h-auto rounded-lg hover:scale-[1.02] transition-transform duration-300 my-2"
+                src={image.url}
+                alt={image.alt || ''}
+                width={400}
+                height={300}
+              />
+            </button>
+          ))}
+        </Masonry>
       </div>
 
       {isOpen && images[currentIndex] && (
@@ -193,7 +200,7 @@ function RoomGallery({ images = [] }) {
                     key={img.id || idx}
                     type="button"
                     onClick={() => setCurrentIndex(idx)}
-                    className={`relative h-16 w-24 shrink-0 rounded  border-2 ${idx === currentIndex ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'
+                    className={`relative h-16 w-24 shrink-0 rounded border-2 ${idx === currentIndex ? 'border-white' : 'border-transparent opacity-60 hover:opacity-100'
                       }`}
                   >
                     <Image src={img.url} alt={img.alt || ''} fill className="object-cover" />
