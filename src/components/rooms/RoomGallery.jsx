@@ -115,7 +115,7 @@ function RoomGallery({ images = [] }) {
         </div>
       )}
 
-      <div className="hidden md:block md:max-h-[70vh] md:max-w-[1100px] md:overflow-y-auto md:overflow-x-hidden md:mx-auto md:snap-y md:snap-mandatory">
+      <div className="hidden md:block md:max-h-[70vh] md:max-w-[1200px] md:overflow-y-auto md:overflow-x-hidden md:mx-auto md:snap-y md:snap-mandatory">
         <Masonry
           breakpointCols={{ default: 4, 1024: 4, 768: 3 }}
           className="flex -ml-2"
