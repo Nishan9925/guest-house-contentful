@@ -16,40 +16,44 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata = {
-  metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
-  title: {
-    default: "Arevik B&B",
-    template: "%s | Arevik B&B",
-  },
-  description:
-    "Stay at Arevik B&B in Ch’iva, Armenia. Comfortable rooms, great amenities, and warm hospitality.",
-  openGraph: {
-    type: "website",
-    siteName: "Arevik B&B",
-    title: "Arevik B&B",
+export async function generateMetadata() {
+  // fetch header to get logo for favicon
+  let logoUrl = null;
+  try {
+    const headerDataForMeta = await HeaderRepository.getInstance().getModels();
+    const logo = headerDataForMeta?.[0]?.fields?.logo?.fields;
+    logoUrl = logo?.file?.url ? `https:${logo.file.url}` : null;
+  } catch {}
+
+  return {
+    metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
+    title: {
+      default: "Arevik B&B",
+      template: "%s | Arevik B&B",
+    },
     description:
       "Stay at Arevik B&B in Ch’iva, Armenia. Comfortable rooms, great amenities, and warm hospitality.",
-    images: [
-      {
-        url: "/opengraph-image",
-        width: 1200,
-        height: 630,
-        alt: "Arevik B&B",
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: "Arevik B&B",
-    description:
-      "Stay at Arevik B&B in Ch’iva, Armenia. Comfortable rooms, great amenities, and warm hospitality.",
-    images: ["/opengraph-image"],
-  },
-  alternates: {
-    canonical: "/",
-  },
-};
+    openGraph: {
+      type: "website",
+      siteName: "Arevik B&B",
+      title: "Arevik B&B",
+      description:
+        "Stay at Arevik B&B in Ch’iva, Armenia. Comfortable rooms, great amenities, and warm hospitality.",
+      images: [
+        { url: "/opengraph-image", width: 1200, height: 630, alt: "Arevik B&B" },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: "Arevik B&B",
+      description:
+        "Stay at Arevik B&B in Ch’iva, Armenia. Comfortable rooms, great amenities, and warm hospitality.",
+      images: ["/opengraph-image"],
+    },
+    alternates: { canonical: "/" },
+    icons: logoUrl ? [{ rel: "icon", url: logoUrl }] : undefined,
+  };
+}
 
 const headerData = await HeaderRepository.getInstance().getModels();
 
