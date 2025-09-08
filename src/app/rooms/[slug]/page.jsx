@@ -142,3 +142,41 @@ export default async function RoomPage({ params }) {
     //     notFound();
     // }
 }
+
+// Dynamic SEO for room pages
+export async function generateMetadata({ params }) {
+    const slug = params?.slug;
+    const room = await RoomsRepository.getInstance().getBySlug(slug, {}, false);
+    console.log("seo", room);
+    if (!room) return {};
+
+    const f = room.fields;
+    console.log(f);
+    const seoTitle = f.name || "Room";
+    const seoDescription = f.bedType || "Comfortable room at Arevik B&B";
+    const canonicalPath =  `/rooms/${slug}`;
+
+    // Build absolute image URL if available
+    const ogImage = Array.isArray(f.images) && f.images[0]?.fields?.file?.url
+        ? `https:${f.images[0].fields.file.url}`
+        : undefined;
+
+    return {
+        title: seoTitle,
+        description: typeof seoDescription === 'string' ? seoDescription : undefined,
+        alternates: { canonical: canonicalPath },
+        openGraph: {
+            title: seoTitle,
+            description: typeof seoDescription === 'string' ? seoDescription : undefined,
+            url: canonicalPath,
+            images: ogImage ? [{ url: ogImage, width: 1200, height: 630, alt: seoTitle }] : undefined,
+            type: 'article',
+        },
+        twitter: {
+            card: 'summary_large_image',
+            title: seoTitle,
+            description: typeof seoDescription === 'string' ? seoDescription : undefined,
+            images: ogImage ? [ogImage] : undefined,
+        },
+    };
+}

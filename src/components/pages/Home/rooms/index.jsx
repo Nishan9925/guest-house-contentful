@@ -25,7 +25,7 @@ function RoomsList({ data = [] }) {
               )}
             </div>
             <div className="flex flex-col align-start gap-2">
-              <h3 className="text-black text-lg">{title}</h3>
+              <h2 className="text-black text-lg">{title}</h2>
               <p className='text-black text-sm'>{bedType}</p>
             </div>
           </Link>
