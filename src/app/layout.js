@@ -19,7 +19,7 @@ const geistMono = Geist_Mono({
 export const metadata = {
   metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000"),
   title: {
-    default: "Arevik B&B – Cozy guesthouse in Ch’iva, Armenia",
+    default: "Arevik B&B",
     template: "%s | Arevik B&B",
   },
   description:
@@ -27,12 +27,12 @@ export const metadata = {
   openGraph: {
     type: "website",
     siteName: "Arevik B&B",
-    title: "Arevik B&B – Cozy guesthouse in Ch’iva, Armenia",
+    title: "Arevik B&B",
     description:
       "Stay at Arevik B&B in Ch’iva, Armenia. Comfortable rooms, great amenities, and warm hospitality.",
     images: [
       {
-        url: "/assets/og-default.jpg",
+        url: "/opengraph-image",
         width: 1200,
         height: 630,
         alt: "Arevik B&B",
@@ -41,10 +41,10 @@ export const metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Arevik B&B – Cozy guesthouse in Ch’iva, Armenia",
+    title: "Arevik B&B",
     description:
       "Stay at Arevik B&B in Ch’iva, Armenia. Comfortable rooms, great amenities, and warm hospitality.",
-    images: ["/assets/og-default.jpg"],
+    images: ["/opengraph-image"],
   },
   alternates: {
     canonical: "/",
